@@ -1,9 +1,9 @@
-"""Simple visualisations comparing real vs synthetic statistics."""
+"""Visualisations comparing real vs synthetic statistics."""
 
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Sequence
 
 try:  # pragma: no cover - optional dependency
     import matplotlib
@@ -124,4 +124,69 @@ def plot_training_history(
     return output_path
 
 
-__all__ = ["plot_numeric_comparison", "plot_training_history"]
+def plot_testing_report(
+    testing_report: Dict[str, object],
+    *,
+    categorical_columns: Sequence[str],
+    continuous_columns: Sequence[str],
+    output_path: Path | str,
+) -> Path:
+    """Create a simple visual summary from the stored testing report."""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    categorical_data: Dict[str, Dict[str, Dict[str, int]]] = testing_report.get("categorical_frequencies", {})  # type: ignore[assignment]
+    continuous_data: Dict[str, Dict[str, Dict[str, List[float]]]] = testing_report.get("continuous_histograms", {})  # type: ignore[assignment]
+
+    target_cat = next((column for column in categorical_columns if column in categorical_data), None)
+    target_cont = next((column for column in continuous_columns if column in continuous_data), None)
+
+    if plt is None:
+        lines = ["testing_plot_summary"]
+        lines.append(f"categorical_column={target_cat}")
+        lines.append(f"continuous_column={target_cont}")
+        output_path.write_text("\n".join(lines), encoding="utf8")
+        return output_path
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+    if target_cat:
+        freq_real = categorical_data[target_cat]["real"]
+        freq_synth = categorical_data[target_cat]["synthetic"]
+        labels = sorted(set(freq_real) | set(freq_synth))
+        real_counts = [freq_real.get(label, 0) for label in labels]
+        synth_counts = [freq_synth.get(label, 0) for label in labels]
+        positions = range(len(labels))
+        axes[0].bar([p - 0.15 for p in positions], real_counts, width=0.3, label="Real")
+        axes[0].bar([p + 0.15 for p in positions], synth_counts, width=0.3, label="Synthetic")
+        axes[0].set_xticks(list(positions))
+        axes[0].set_xticklabels(labels, rotation=30, ha="right")
+        axes[0].set_title(f"Categorical frequency: {target_cat}")
+        axes[0].legend()
+    else:
+        axes[0].text(0.5, 0.5, "No categorical data", ha="center", va="center")
+        axes[0].set_axis_off()
+
+    if target_cont:
+        real_hist = continuous_data[target_cont]["real"]
+        synth_hist = continuous_data[target_cont]["synthetic"]
+        bins = real_hist["bins"]
+        real_counts = real_hist["counts"]
+        synth_counts = synth_hist["counts"]
+        centers = [(bins[i] + bins[i + 1]) / 2 for i in range(len(bins) - 1)]
+        axes[1].plot(centers, real_counts, label="Real")
+        axes[1].plot(centers, synth_counts, label="Synthetic")
+        axes[1].set_title(f"Continuous histogram: {target_cont}")
+        axes[1].legend()
+    else:
+        axes[1].text(0.5, 0.5, "No continuous data", ha="center", va="center")
+        axes[1].set_axis_off()
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=150)
+    plt.close(fig)
+    return output_path
+
+
+__all__ = ["plot_numeric_comparison", "plot_testing_report", "plot_training_history"]

@@ -12,6 +12,7 @@ def test_pipeline_runs_end_to_end(tmp_path):
     viz_path = tmp_path / "viz.png"
     history_path = tmp_path / "loss.png"
     testing_path = tmp_path / "testing.json"
+    testing_plot_path = tmp_path / "testing_plot.png"
 
     schema = SchemaConfig(
         id_column="transaction_id",
@@ -32,6 +33,7 @@ def test_pipeline_runs_end_to_end(tmp_path):
         visualization_path=viz_path,
         training_history_path=history_path,
         testing_report_path=testing_path,
+        testing_visualization_path=testing_plot_path,
     )
 
     assert output_path.exists()
@@ -39,6 +41,7 @@ def test_pipeline_runs_end_to_end(tmp_path):
     assert viz_path.exists()
     assert history_path.exists()
     assert testing_path.exists()
+    assert testing_plot_path.exists()
     lines = output_path.read_text().strip().splitlines()
     assert len(lines) == 17  # header + 16 records
     assert "analysis" in result
@@ -46,4 +49,5 @@ def test_pipeline_runs_end_to_end(tmp_path):
     assert "quality_report" in result
     assert "training_history" in result
     assert "testing_report" in result
+    assert "testing_visualization_path" in result
     assert result["synthetic_preview"]

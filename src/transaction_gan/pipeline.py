@@ -14,7 +14,11 @@ from .evaluation import build_quality_report, compare_statistics
 from .gan import GANTrainingConfig, SyntheticDataGenerator
 from .preprocessing import TransactionPreprocessor
 from .testing import generate_testing_report
-from .visualization import plot_numeric_comparison, plot_training_history
+from .visualization import (
+    plot_numeric_comparison,
+    plot_testing_report as plot_testing_visual,
+    plot_training_history,
+)
 
 
 DEFAULT_SCHEMA = SchemaConfig(
@@ -141,6 +145,7 @@ def generate_synthetic_transactions(
     visualization_path: Path | str | None = None,
     training_history_path: Path | str | None = None,
     testing_report_path: Path | str | None = None,
+    testing_visualization_path: Path | str | None = None,
 ) -> Dict[str, object]:
     """Run the full analysis, training, generation, and evaluation pipeline."""
 
@@ -238,6 +243,18 @@ def generate_synthetic_transactions(
     with testing_target.open("w", encoding="utf8") as handle:
         json.dump(testing_report, handle, indent=2)
 
+    testing_viz_target = (
+        _resolve_output_path(testing_visualization_path)
+        if testing_visualization_path
+        else output_path.with_suffix(".testing.png")
+    )
+    testing_viz_path = plot_testing_visual(
+        testing_report,
+        categorical_columns=resolved_schema.categorical_columns,
+        continuous_columns=resolved_schema.continuous_columns,
+        output_path=testing_viz_target,
+    )
+
     preview = synthetic_records[:5]
 
     return {
@@ -249,6 +266,7 @@ def generate_synthetic_transactions(
         "visualization_path": str(viz_path),
         "training_history_path": str(history_path),
         "testing_report_path": str(testing_target),
+        "testing_visualization_path": str(testing_viz_path),
         "synthetic_preview": preview,
         "training_round_trip_preview": round_trip_preview,
         "training_history": training_history,
@@ -294,6 +312,7 @@ def load_config(path: Path | str) -> PipelineConfig:
         visualization_path=Path(raw["visualization_path"]) if raw.get("visualization_path") else None,
         training_history_path=Path(raw["training_history_path"]) if raw.get("training_history_path") else None,
         testing_report_path=Path(raw["testing_report_path"]) if raw.get("testing_report_path") else None,
+        testing_visualization_path=Path(raw["testing_visualization_path"]) if raw.get("testing_visualization_path") else None,
     )
     return config
 
@@ -311,6 +330,7 @@ def run_from_config(config: PipelineConfig) -> Dict[str, object]:
         visualization_path=config.visualization_path,
         training_history_path=config.training_history_path,
         testing_report_path=config.testing_report_path,
+        testing_visualization_path=config.testing_visualization_path,
     )
 
 

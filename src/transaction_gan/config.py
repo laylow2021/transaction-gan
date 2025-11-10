@@ -34,6 +34,7 @@ class PipelineConfig:
     visualization_path: Path | None = None
     training_history_path: Path | None = None
     testing_report_path: Path | None = None
+    testing_visualization_path: Path | None = None
 
 
 __all__ = ["PipelineConfig", "SchemaConfig"]

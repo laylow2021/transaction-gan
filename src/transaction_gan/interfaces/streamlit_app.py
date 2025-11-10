@@ -142,6 +142,7 @@ def main() -> None:
     viz_path = output_dir / "comparison.png"
     history_path = output_dir / "loss.png"
     testing_path = output_dir / "testing.json"
+    testing_plot_path = output_dir / "testing_plot.png"
 
     schema = SchemaConfig(
         id_column=id_column,
@@ -169,6 +170,7 @@ def main() -> None:
             visualization_path=viz_path,
             training_history_path=history_path,
             testing_report_path=testing_path,
+            testing_visualization_path=testing_plot_path,
         )
 
     st.success("Synthetic dataset generated!")
@@ -194,6 +196,7 @@ def main() -> None:
         _download_button("Metrics JSON", metrics_path, "application/json", "metrics.json")
     with download_col3:
         _download_button("Testing report", testing_path, "application/json", "testing.json")
+        _download_button("Testing plot", testing_plot_path, "image/png", "testing_plot.png")
 
     st.header("Testing statistics")
     st.subheader("Quality report (KS & Wasserstein)")
@@ -203,7 +206,7 @@ def main() -> None:
     st.json(result["testing_report"])
 
     st.header("Visual comparisons")
-    col_plot1, col_plot2 = st.columns(2)
+    col_plot1, col_plot2, col_plot3 = st.columns(3)
     with col_plot1:
         st.caption("Real vs Synthetic feature means")
         if Path(result["visualization_path"]).suffix.lower() in {".png", ".jpg", ".jpeg"}:
@@ -230,3 +233,14 @@ def main() -> None:
 
 if __name__ == "__main__":  # pragma: no cover
     main()
+    with col_plot3:
+        st.caption("Testing report summary")
+        if Path(result["testing_visualization_path"]).suffix.lower() in {".png", ".jpg", ".jpeg"}:
+            st.image(result["testing_visualization_path"])
+        else:
+            st.download_button(
+                "Download testing summary",
+                Path(result["testing_visualization_path"]).read_bytes(),
+                file_name="testing_visualization.txt",
+                mime="text/plain",
+            )

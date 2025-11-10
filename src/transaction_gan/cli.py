@@ -127,6 +127,11 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         help="Optional path to store the independent testing report JSON.",
     )
+    parser.add_argument(
+        "--testing-plot-path",
+        type=Path,
+        help="Optional path to store the testing report visual summary.",
+    )
     return parser
 
 
@@ -162,6 +167,7 @@ def run_cli(args: argparse.Namespace | None = None) -> Dict[str, Any]:
             visualization_path=parsed.viz_path,
             training_history_path=parsed.history_path,
             testing_report_path=parsed.testing_path,
+            testing_visualization_path=parsed.testing_plot_path,
         )
 
     print(json.dumps(result, indent=2, cls=EnhancedJSONEncoder))

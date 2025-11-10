@@ -115,6 +115,8 @@ Every pipeline run also produces diagnostics so you can validate the GAN:
   categorical frequencies, continuous histograms, and grouped histograms (continuous per
   category). The CLI/notebook flow saves this as `OUTPUT.testing.json` unless you pass
   `--testing-path`.
+- **Testing visual summary** – a companion PNG (or text fallback) is produced for quick
+  inspection of the testing report (`OUTPUT.testing.png`, configurable via `--testing-plot-path`).
 - **Round-trip preview** – the return dictionary includes `synthetic_preview` and
   `training_round_trip_preview` so notebooks/CLI outputs can show how well the reversible
   transforms behave before and after GAN sampling.
