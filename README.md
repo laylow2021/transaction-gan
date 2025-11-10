@@ -40,7 +40,9 @@ implemented entirely with the Python standard library. It includes:
 Launch the interactive app to run the pipeline end-to-end without writing code:
 
 ```bash
-streamlit run -m transaction_gan.streamlit_app
+streamlit run src/transaction_gan/interfaces/streamlit_app.py
+# or
+python -m streamlit run src.transaction_gan.interfaces.streamlit_app
 ```
 
 The UI lets you:
@@ -94,7 +96,7 @@ Each column type is treated as follows:
 - **Drop columns (`drop_columns`)** – removed before training so sensitive identifiers
   never enter the GAN, but you can still include them in the final CSV ordering.
 
-When running via the CLI (`transaction_gan/cli.py`) or notebook code, pass these schema
+When running via the CLI (`src/transaction_gan/cli.py`) or notebook code, pass these schema
 settings using `SchemaConfig` or the associated CLI flags (`--id-col`, `--geo-col`, etc.).
 
 ### Testing & visualisation outputs
@@ -119,8 +121,9 @@ Every pipeline run also produces diagnostics so you can validate the GAN:
 
 ## Project structure
 
-- `transaction_gan/`: Python package containing the pipeline implementation.
-- `transaction_gan/testing.py`: Independent comparison utilities for categorical/continuous diagnostics.
+- `src/transaction_gan/`: Core Python package containing the pipeline implementation.
+- `src/transaction_gan/interfaces/`: UI front-ends such as the Streamlit application.
+- `src/transaction_gan/testing.py`: Independent comparison utilities for categorical/continuous diagnostics.
 - `data/sample_transactions.csv`: Example dataset used for development and testing.
 - `tests/`: Automated tests verifying preprocessing, GAN behaviour, and the full pipeline.
 - `pyproject.toml`: Python packaging metadata.

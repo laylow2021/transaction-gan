@@ -12,12 +12,12 @@ from typing import List, Sequence
 import streamlit as st
 
 try:  # pragma: no cover - supports direct `streamlit run` invocation
-    from .config import SchemaConfig
-    from .gan import GANTrainingConfig
-    from .pipeline import generate_synthetic_transactions
+    from ..config import SchemaConfig
+    from ..gan import GANTrainingConfig
+    from ..pipeline import generate_synthetic_transactions
 except ImportError:  # pragma: no cover
     PACKAGE_ROOT = Path(__file__).resolve().parent
-    PROJECT_ROOT = PACKAGE_ROOT.parent
+    PROJECT_ROOT = PACKAGE_ROOT.parent.parent
     if str(PROJECT_ROOT) not in sys.path:
         sys.path.append(str(PROJECT_ROOT))
     from transaction_gan.config import SchemaConfig
@@ -83,7 +83,9 @@ def main() -> None:
         epochs = st.number_input("Epochs", min_value=1, max_value=2000, value=200, step=10)
         noise_dim = st.number_input("Noise dimension", min_value=2, max_value=128, value=8, step=1)
         hidden_dim = st.number_input("Hidden layer width", min_value=4, max_value=256, value=16, step=4)
-        learning_rate = st.number_input("Learning rate", min_value=1e-5, max_value=1e-1, value=1e-3, step=1e-4, format="%.5f")
+        learning_rate = st.number_input(
+            "Learning rate", min_value=1e-5, max_value=1e-1, value=1e-3, step=1e-4, format="%.5f"
+        )
 
         output_filename = st.text_input("Output filename", value="synthetic_transactions.csv")
 
