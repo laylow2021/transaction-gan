@@ -221,6 +221,7 @@ class SyntheticDataGenerator:
         self.discriminator = TransactionDiscriminator(
             input_dim, self.config.hidden_dim
         )
+        self.history: Dict[str, List[float]] = {"generator": [], "discriminator": []}
 
     def _noise_vector(self) -> Vector:
         return [random.gauss(0.0, 1.0) for _ in range(self.config.noise_dim)]
@@ -230,7 +231,12 @@ class SyntheticDataGenerator:
         if not samples:
             return
 
+        self.history = {"generator": [], "discriminator": []}
+
+        eps = 1e-8
         for _ in range(self.config.epochs):
+            disc_losses: List[float] = []
+            gen_losses: List[float] = []
             random.shuffle(samples)
             for real_sample in samples:
                 # Train discriminator
@@ -253,6 +259,10 @@ class SyntheticDataGenerator:
                 )
                 self.discriminator.apply_gradients(combined_grads, self.config.learning_rate)
 
+                loss_real = -math.log(max(real_output, eps))
+                loss_fake = -math.log(max(1.0 - fake_output, eps))
+                disc_losses.append(0.5 * (loss_real + loss_fake))
+
                 # Train generator
                 noise = self._noise_vector()
                 generated_sample, gen_cache = self.generator.forward(noise)
@@ -270,6 +280,16 @@ class SyntheticDataGenerator:
 
                 gen_grads = self.generator.backward(gen_cache, grad_input)
                 self.generator.apply_gradients(gen_grads, self.config.learning_rate)
+                gen_losses.append(-math.log(max(fake_output, eps)))
+
+            if disc_losses:
+                self.history["discriminator"].append(sum(disc_losses) / len(disc_losses))
+            else:
+                self.history["discriminator"].append(0.0)
+            if gen_losses:
+                self.history["generator"].append(sum(gen_losses) / len(gen_losses))
+            else:
+                self.history["generator"].append(0.0)
 
     def generate(self, num_samples: int) -> List[Vector]:
         generated: List[Vector] = []
@@ -278,6 +298,9 @@ class SyntheticDataGenerator:
             sample, _ = self.generator.forward(noise)
             generated.append(sample)
         return generated
+
+    def get_training_history(self) -> Dict[str, List[float]]:
+        return self.history
 
 
 __all__ = [

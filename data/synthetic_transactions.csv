@@ -1,0 +1,33 @@
+transaction_id,amount,customer_age,merchant_category,transaction_type,merchant_code,is_fraud,transaction_date,transaction_address,transaction_address_lat,transaction_address_lon
+synthetic_1,3554.64037,55.42988,Grocery,ATM Withdrawal,103,0,2023-05-29,Springfield,38.76917,-90.26914
+synthetic_2,1329.58524,46.93038,Travel,Online,101,1,2023-05-15,"34.09843,-104.80555",34.09843,-104.80555
+synthetic_3,2848.15041,57.29746,Electronics,,103,0,2023-11-29,Springfield,38.52431,-93.65174
+synthetic_4,3777.4801,51.0446,Gas Station,ATM Withdrawal,103,0,2023-03-21,Springfield,38.94614,-88.34411
+synthetic_5,3145.56829,52.60371,Gas Station,ATM Withdrawal,101,0,2023-01-15,Dallas,37.10918,-95.63694
+synthetic_6,2148.69466,46.86475,Gas Station,Online,106,0,2023-03-10,Denver,36.13891,-103.4588
+synthetic_7,2903.89037,42.8858,Pharmacy,Online,108,0,2023-06-21,Springfield,37.12678,-88.79474
+synthetic_8,1926.80272,57.11948,Travel,Contactless,101,,2023-04-09,Denver,35.84261,-106.4407
+synthetic_9,2671.39638,58.10156,Online Retail,Contactless,103,0,2023-05-06,"36.93568,-99.84453",36.93568,-99.84453
+synthetic_10,3172.16633,42.24793,Electronics,Online,108,0,2023-08-30,Fairview,38.59198,-86.09167
+synthetic_11,1290.0249,56.96197,Travel,Online,109,1,2023-07-20,"34.79314,-112.09640",34.79314,-112.0964
+synthetic_12,2708.08075,56.40861,Online Retail,ATM Withdrawal,109,0,2023-03-29,Denver,37.38972,-103.52544
+synthetic_13,3114.89879,53.95912,Grocery,ATM Withdrawal,103,0,2023-07-14,"39.15657,-96.37954",39.15657,-96.37954
+synthetic_14,3238.12934,46.77743,Pharmacy,Online,101,0,2023-06-08,Fairview,37.6835,-86.68638
+synthetic_15,2540.57529,48.62313,Electronics,Online,101,0,2023-05-30,Dallas,36.86804,-98.08613
+synthetic_16,3225.65396,52.93833,Electronics,Contactless,108,0,2023-10-29,Springfield,38.45275,-87.16155
+synthetic_17,3125.6901,58.50119,Online Retail,Contactless,103,0,2023-05-14,"37.77470,-95.49923",37.7747,-95.49923
+synthetic_18,1878.23425,60.03632,Travel,Contactless,101,,2023-04-07,Denver,36.18615,-107.6055
+synthetic_19,2229.30963,65.95449,Travel,Contactless,109,0,2023-08-07,Denver,36.82698,-106.89796
+synthetic_20,2712.8138,38.4648,Pharmacy,Online,108,0,2023-10-22,Fairview,37.38131,-84.11293
+synthetic_21,1634.84188,60.19919,Travel,Contactless,101,0,2023-07-01,Denver,35.60557,-107.5795
+synthetic_22,2740.087,44.84443,Gas Station,Online,101,0,2022-12-23,Dallas,36.38773,-96.96364
+synthetic_23,2535.34945,40.61568,Pharmacy,Online,108,0,2023-06-25,Springfield,36.50217,-91.4884
+synthetic_24,2157.43253,53.97974,Travel,Online,101,0,2023-08-15,Dallas,36.12369,-100.05627
+synthetic_25,3525.33533,54.76208,Grocery,ATM Withdrawal,103,0,2023-07-23,Springfield,39.26083,-90.61586
+synthetic_26,2706.64756,40.2318,Pharmacy,Online,108,0,2023-07-10,Fairview,36.66019,-87.95972
+synthetic_27,3343.93999,38.72949,Gas Station,Online,107,0,2022-12-29,Springfield,37.73552,-88.07042
+synthetic_28,2804.35542,52.40765,Restaurant,Contactless,102,0,2023-11-13,Fairview,36.87199,-86.05605
+synthetic_29,2736.00424,42.80777,Pharmacy,Online,108,0,2023-07-30,Springfield,37.0622,-89.66865
+synthetic_30,2720.62972,37.35784,Electronics,Online,108,0,2023-05-21,Springfield,37.13298,-90.91422
+synthetic_31,3558.30615,60.53782,Online Retail,Contactless,103,0,2023-03-12,Springfield,38.45256,-93.84694
+synthetic_32,2206.08948,65.42056,Travel,Contactless,101,0,2023-09-18,"36.94403,-100.58271",36.94403,-100.58271

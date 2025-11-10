@@ -14,7 +14,7 @@ implemented entirely with the Python standard library. It includes:
 
 ## Quick start
 
-1. Create a virtual environment (optional) and install the project in editable mode if desired:
+1. Ensure you are using Python 3.11 (the project targets 3.11 as its base interpreter). Create a virtual environment (optional) and install the project in editable mode if desired:
 
    ```bash
    pip install -e .[dev]
@@ -34,6 +34,22 @@ implemented entirely with the Python standard library. It includes:
    ```bash
    pytest
    ```
+
+## Streamlit interface
+
+Launch the interactive app to run the pipeline end-to-end without writing code:
+
+```bash
+streamlit run -m transaction_gan.streamlit_app
+```
+
+The UI lets you:
+
+- Upload a local CSV (or reference an on-disk path) and preview the data.
+- Assign each column to the correct semantic type (ID, date, geo, continuous, categorical, drop).
+- Configure GAN hyperparameters and the number of synthetic rows to generate.
+- Download the synthetic dataset plus testing artefacts, and inspect KS/Wasserstein metrics,
+  categorical/continuous comparisons, and real-vs-synthetic plots directly in the browser.
 
 ## Configuration
 
@@ -59,9 +75,52 @@ A configuration file supports the following structure:
 
 Save the file and point the CLI to it with `--config path/to/config.json`.
 
+### Column-type handling
+
+The preprocessor is schema-driven so you can plug the GAN into arbitrary tabular data.
+Each column type is treated as follows:
+
+- **ID columns (`id_column`)** – dropped during training but automatically reintroduced
+  for synthetic rows (e.g., `synthetic_1234`) to keep outputs easy to join or trace.
+- **Continuous columns (`continuous_columns`)** – converted to floats, normalised via
+  z-scores, and later inverse-transformed to their original scale.
+- **Categorical columns (`categorical_columns`)** – one-hot encoded with an explicit
+  “unknown/empty” bucket. During inverse transform the most probable category is chosen.
+- **Date column (`date_column`)** – parsed from common date formats, converted to ordinal
+  integers, normalised, and emitted back as ISO strings (`YYYY-MM-DD`).
+- **Geographic column (`geo_column`)** – free-form addresses are resolved to latitude/
+  longitude pairs using a lightweight lookup (street → city → state → country). Both the
+  original text and the derived lat/lon features are preserved on inverse transform.
+- **Drop columns (`drop_columns`)** – removed before training so sensitive identifiers
+  never enter the GAN, but you can still include them in the final CSV ordering.
+
+When running via the CLI (`transaction_gan/cli.py`) or notebook code, pass these schema
+settings using `SchemaConfig` or the associated CLI flags (`--id-col`, `--geo-col`, etc.).
+
+### Testing & visualisation outputs
+
+Every pipeline run also produces diagnostics so you can validate the GAN:
+
+- **Metrics JSON** – `quality_report` plus Kolmogorov–Smirnov statistics and Wasserstein
+  distances are written to `OUTPUT.metrics.json` (or a custom `--metrics-path`). Each column
+  gets pass/fail flags to gate GAN quality objectively.
+- **Comparison plot** – by default a PNG stored alongside the CSV (or `--viz-path`) shows
+  real vs synthetic feature means. If Matplotlib is unavailable the code writes a CSV
+  summary instead, keeping the workflow headless-friendly.
+- **Training history plot** – generator/discriminator loss curves are exported (or a CSV
+  fallback) so you can visualise convergence; override with `--history-path` if desired.
+- **Independent testing report** – the `transaction_gan.testing` module benchmarks
+  categorical frequencies, continuous histograms, and grouped histograms (continuous per
+  category). The CLI/notebook flow saves this as `OUTPUT.testing.json` unless you pass
+  `--testing-path`.
+- **Round-trip preview** – the return dictionary includes `synthetic_preview` and
+  `training_round_trip_preview` so notebooks/CLI outputs can show how well the reversible
+  transforms behave before and after GAN sampling.
+
 ## Project structure
 
 - `transaction_gan/`: Python package containing the pipeline implementation.
+- `transaction_gan/testing.py`: Independent comparison utilities for categorical/continuous diagnostics.
 - `data/sample_transactions.csv`: Example dataset used for development and testing.
 - `tests/`: Automated tests verifying preprocessing, GAN behaviour, and the full pipeline.
 - `pyproject.toml`: Python packaging metadata.

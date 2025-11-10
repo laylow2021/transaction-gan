@@ -1,0 +1,3 @@
+if [ -f ".venv/Scripts/activate" ]; then
+    source ".venv/Scripts/activate"
+fi

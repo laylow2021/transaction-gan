@@ -1,0 +1,24 @@
+{
+  "quality_report": {
+    "amount": {
+      "ks_statistic": 0.28925,
+      "wasserstein_distance": 787.0362587425834,
+      "ks_pass": false,
+      "wasserstein_pass": false
+    },
+    "customer_age": {
+      "ks_statistic": 0.30600000000000005,
+      "wasserstein_distance": 10.576222321500982,
+      "ks_pass": false,
+      "wasserstein_pass": false
+    }
+  },
+  "ks_statistics": {
+    "amount": 0.28925,
+    "customer_age": 0.30600000000000005
+  },
+  "wasserstein_distances": {
+    "amount": 787.0362587425834,
+    "customer_age": 10.576222321500982
+  }
+}
