@@ -10,8 +10,10 @@ from typing import Dict, Iterable, List
 from .analysis import describe_transactions
 from .config import PipelineConfig, SchemaConfig
 from .data_loader import load_transactions
+from .data_split import split_records
 from .evaluation import build_quality_report, compare_statistics
 from .gan import GANTrainingConfig, SyntheticDataGenerator
+from .metrics import real_vs_synthetic_auc
 from .preprocessing import TransactionPreprocessor
 from .testing import generate_testing_report
 from .visualization import (
@@ -23,10 +25,15 @@ from .visualization import (
 
 DEFAULT_SCHEMA = SchemaConfig(
     id_column="transaction_id",
-    geo_column="transaction_address",
-    date_column="transaction_date",
     continuous_columns=("amount", "customer_age"),
-    categorical_columns=("merchant_category", "transaction_type", "merchant_code", "is_fraud"),
+    categorical_columns=(
+        "merchant_category",
+        "transaction_type",
+        "transaction_date",
+        "merchant_code",
+        "is_fraud",
+        "transaction_address",
+    ),
     drop_columns=("transaction_id",),
 )
 DEFAULT_SAMPLES = 512
@@ -41,22 +48,32 @@ def _resolve_schema(
     categorical_columns: Iterable[str] | None,
     drop_columns: Iterable[str] | None,
     id_column: str | None,
-    geo_column: str | None,
-    date_column: str | None,
+    hierarchical_categorical_groups: Iterable[Iterable[str]] | None,
 ) -> SchemaConfig:
     if schema:
         return schema
 
     continuous = tuple(continuous_columns or DEFAULT_SCHEMA.continuous_columns)
-    categorical = tuple(categorical_columns or DEFAULT_SCHEMA.categorical_columns)
+    categorical_list = list(categorical_columns or DEFAULT_SCHEMA.categorical_columns)
     drops = tuple(drop_columns or DEFAULT_SCHEMA.drop_columns)
+    hierarchical = tuple(
+        tuple(group)
+        for group in (
+            hierarchical_categorical_groups or DEFAULT_SCHEMA.hierarchical_categorical_groups
+        )
+    )
+
+    for group in hierarchical:
+        for column in group:
+            if column not in categorical_list:
+                categorical_list.append(column)
+    categorical = tuple(categorical_list)
 
     return SchemaConfig(
         id_column=id_column if id_column is not None else DEFAULT_SCHEMA.id_column,
-        geo_column=geo_column if geo_column is not None else DEFAULT_SCHEMA.geo_column,
-        date_column=date_column if date_column is not None else DEFAULT_SCHEMA.date_column,
         continuous_columns=continuous,
         categorical_columns=categorical,
+        hierarchical_categorical_groups=hierarchical,
         drop_columns=drops,
     )
 
@@ -65,10 +82,9 @@ def _prepare_preprocessor(schema: SchemaConfig) -> TransactionPreprocessor:
     return TransactionPreprocessor(
         continuous_features=list(schema.continuous_columns),
         categorical_features=list(schema.categorical_columns),
-        date_feature=schema.date_column,
-        geo_feature=schema.geo_column,
         id_feature=schema.id_column,
         drop_features=list(schema.drop_columns),
+        hierarchical_categorical_groups=list(schema.hierarchical_categorical_groups),
     )
 
 
@@ -93,11 +109,6 @@ def _output_fieldnames(schema: SchemaConfig) -> List[str]:
         _add(column)
     for column in schema.categorical_columns:
         _add(column)
-    _add(schema.date_column)
-    if schema.geo_column:
-        _add(schema.geo_column)
-        _add(f"{schema.geo_column}_lat")
-        _add(f"{schema.geo_column}_lon")
     return ordered
 
 def _resolve_input_path(path: Path | str) -> Path:
@@ -137,8 +148,7 @@ def generate_synthetic_transactions(
     categorical_features: Iterable[str] | None = None,
     drop_features: Iterable[str] | None = None,
     id_column: str | None = None,
-    geo_column: str | None = None,
-    date_column: str | None = None,
+    hierarchical_categorical_groups: Iterable[Iterable[str]] | None = None,
     gan_config: GANTrainingConfig | None = None,
     samples_to_generate: int = DEFAULT_SAMPLES,
     metrics_path: Path | str | None = None,
@@ -146,6 +156,8 @@ def generate_synthetic_transactions(
     training_history_path: Path | str | None = None,
     testing_report_path: Path | str | None = None,
     testing_visualization_path: Path | str | None = None,
+    train_fraction: float = 0.8,
+    split_seed: int = 42,
 ) -> Dict[str, object]:
     """Run the full analysis, training, generation, and evaluation pipeline."""
 
@@ -157,8 +169,7 @@ def generate_synthetic_transactions(
         categorical_columns=categorical_features,
         drop_columns=drop_features,
         id_column=id_column,
-        geo_column=geo_column,
-        date_column=date_column,
+        hierarchical_categorical_groups=hierarchical_categorical_groups,
     )
 
     analysis_summary = describe_transactions(
@@ -167,32 +178,86 @@ def generate_synthetic_transactions(
         categorical_features=resolved_schema.categorical_columns,
     )
 
-    training_rows = _trim_records(records, resolved_schema)
-    preprocessor = _prepare_preprocessor(resolved_schema)
-    processed = preprocessor.fit_transform(training_rows)
-    if not processed:
+    trimmed_rows = _trim_records(records, resolved_schema)
+    train_rows, holdout_rows = split_records(
+        trimmed_rows,
+        train_fraction=train_fraction,
+        seed=split_seed,
+    )
+    if not train_rows:
         raise ValueError("No rows were available for training after preprocessing.")
 
-    gan = SyntheticDataGenerator(len(processed[0]), gan_config)
-    gan.train(processed)
+    preprocessor = _prepare_preprocessor(resolved_schema)
+    processed_train = preprocessor.fit_transform(train_rows)
+    processed_holdout = preprocessor.transform(holdout_rows) if holdout_rows else []
+
+    categorical_slices = preprocessor.categorical_input_slices()
+    gan = SyntheticDataGenerator(
+        len(processed_train[0]),
+        gan_config,
+        categorical_slices=categorical_slices,
+    )
+    gan.train(processed_train)
     training_history = gan.get_training_history()
 
     synthetic_matrix = gan.generate(samples_to_generate)
     synthetic_records = preprocessor.inverse_transform(synthetic_matrix)
-    round_trip_preview = preprocessor.inverse_transform(processed[:5])
+    round_trip_preview = preprocessor.inverse_transform(processed_train[:5])
 
-    evaluation = compare_statistics(
-        training_rows,
+    evaluation_train = compare_statistics(
+        train_rows,
         synthetic_records,
         numeric_features=resolved_schema.continuous_columns,
     )
-    quality_report = build_quality_report(evaluation)
+    evaluation_holdout = (
+        compare_statistics(
+            holdout_rows,
+            synthetic_records,
+            numeric_features=resolved_schema.continuous_columns,
+        )
+        if holdout_rows
+        else None
+    )
+    evaluation = {
+        "train": evaluation_train,
+        "holdout": evaluation_holdout,
+    }
+    quality_report = {
+        "train": build_quality_report(evaluation_train),
+        "holdout": build_quality_report(evaluation_holdout) if evaluation_holdout else None,
+    }
 
-    testing_report = generate_testing_report(
-        training_rows,
+    testing_report_train = generate_testing_report(
+        train_rows,
         synthetic_records,
         schema=resolved_schema,
     )
+    testing_report_holdout = (
+        generate_testing_report(
+            holdout_rows,
+            synthetic_records,
+            schema=resolved_schema,
+        )
+        if holdout_rows
+        else None
+    )
+    testing_reports = {
+        "train": testing_report_train,
+        "holdout": testing_report_holdout,
+    }
+
+    auc_train = real_vs_synthetic_auc(processed_train, synthetic_matrix)
+    auc_holdout = (
+        real_vs_synthetic_auc(processed_holdout, synthetic_matrix) if processed_holdout else None
+    )
+    auc_scores = {"train": auc_train, "holdout": auc_holdout}
+
+    split_summary = {
+        "train_fraction": train_fraction,
+        "train_size": len(train_rows),
+        "holdout_size": len(holdout_rows),
+        "split_seed": split_seed,
+    }
 
     output_path = _resolve_output_path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -209,8 +274,12 @@ def generate_synthetic_transactions(
         json.dump(
             {
                 "quality_report": quality_report,
-                "ks_statistics": evaluation.ks_statistics,
-                "wasserstein_distances": evaluation.wasserstein_distances,
+                "evaluation": {
+                    "train": evaluation_train.to_dict(),
+                    "holdout": evaluation_holdout.to_dict() if evaluation_holdout else None,
+                },
+                "real_vs_synthetic_auc": auc_scores,
+                "split_summary": split_summary,
             },
             handle,
             indent=2,
@@ -218,7 +287,7 @@ def generate_synthetic_transactions(
 
     viz_target = _resolve_output_path(visualization_path) if visualization_path else output_path.with_suffix(".png")
     viz_path = plot_numeric_comparison(
-        training_rows,
+        train_rows,
         synthetic_records,
         numeric_features=resolved_schema.continuous_columns,
         output_path=viz_target,
@@ -241,7 +310,7 @@ def generate_synthetic_transactions(
     )
     testing_target.parent.mkdir(parents=True, exist_ok=True)
     with testing_target.open("w", encoding="utf8") as handle:
-        json.dump(testing_report, handle, indent=2)
+        json.dump(testing_reports, handle, indent=2)
 
     testing_viz_target = (
         _resolve_output_path(testing_visualization_path)
@@ -249,7 +318,7 @@ def generate_synthetic_transactions(
         else output_path.with_suffix(".testing.png")
     )
     testing_viz_path = plot_testing_visual(
-        testing_report,
+        testing_report_train,
         categorical_columns=resolved_schema.categorical_columns,
         continuous_columns=resolved_schema.continuous_columns,
         output_path=testing_viz_target,
@@ -270,7 +339,9 @@ def generate_synthetic_transactions(
         "synthetic_preview": preview,
         "training_round_trip_preview": round_trip_preview,
         "training_history": training_history,
-        "testing_report": testing_report,
+        "testing_report": testing_reports,
+        "real_vs_synthetic_auc": auc_scores,
+        "split_summary": split_summary,
     }
 
 
@@ -281,20 +352,38 @@ def load_config(path: Path | str) -> PipelineConfig:
         raw = json.load(handle)
 
     schema_payload = raw.get("schema", raw)
+    legacy_geo = schema_payload.get("geo_column")
+    legacy_date = schema_payload.get("date_column")
+    categorical_candidates = (
+        schema_payload.get("categorical_columns")
+        or schema_payload.get("categorical_features")
+        or DEFAULT_SCHEMA.categorical_columns
+    )
+    categorical = list(categorical_candidates)
+    for column in (legacy_date, legacy_geo):
+        if column and column not in categorical:
+            categorical.append(column)
+
+    hierarchical_groups = tuple(
+        tuple(group)
+        for group in schema_payload.get(
+            "hierarchical_categorical_groups", DEFAULT_SCHEMA.hierarchical_categorical_groups
+        )
+    )
+    for group in hierarchical_groups:
+        for column in group:
+            if column not in categorical:
+                categorical.append(column)
+
     schema = SchemaConfig(
         id_column=schema_payload.get("id_column", DEFAULT_SCHEMA.id_column),
-        geo_column=schema_payload.get("geo_column", DEFAULT_SCHEMA.geo_column),
-        date_column=schema_payload.get("date_column", DEFAULT_SCHEMA.date_column),
         continuous_columns=tuple(
             schema_payload.get("continuous_columns")
             or schema_payload.get("numeric_features")
             or DEFAULT_SCHEMA.continuous_columns
         ),
-        categorical_columns=tuple(
-            schema_payload.get("categorical_columns")
-            or schema_payload.get("categorical_features")
-            or DEFAULT_SCHEMA.categorical_columns
-        ),
+        categorical_columns=tuple(categorical),
+        hierarchical_categorical_groups=hierarchical_groups,
         drop_columns=tuple(
             schema_payload.get("drop_columns")
             or schema_payload.get("drop_features")
@@ -313,6 +402,8 @@ def load_config(path: Path | str) -> PipelineConfig:
         training_history_path=Path(raw["training_history_path"]) if raw.get("training_history_path") else None,
         testing_report_path=Path(raw["testing_report_path"]) if raw.get("testing_report_path") else None,
         testing_visualization_path=Path(raw["testing_visualization_path"]) if raw.get("testing_visualization_path") else None,
+        train_fraction=float(raw.get("train_fraction", 0.8)),
+        split_seed=int(raw.get("split_seed", 42)),
     )
     return config
 
@@ -331,6 +422,8 @@ def run_from_config(config: PipelineConfig) -> Dict[str, object]:
         training_history_path=config.training_history_path,
         testing_report_path=config.testing_report_path,
         testing_visualization_path=config.testing_visualization_path,
+        train_fraction=config.train_fraction,
+        split_seed=config.split_seed,
     )
 
 

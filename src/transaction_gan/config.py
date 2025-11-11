@@ -14,11 +14,10 @@ class SchemaConfig:
     """Describe how dataset columns should be interpreted."""
 
     id_column: str | None = None
-    geo_column: str | None = None
-    date_column: str | None = None
     continuous_columns: Sequence[str] = ()
     categorical_columns: Sequence[str] = ()
     drop_columns: Sequence[str] = ()
+    hierarchical_categorical_groups: Sequence[Sequence[str]] = ()
 
 
 @dataclass
@@ -35,6 +34,8 @@ class PipelineConfig:
     training_history_path: Path | None = None
     testing_report_path: Path | None = None
     testing_visualization_path: Path | None = None
+    train_fraction: float = 0.8
+    split_seed: int = 42
 
 
 __all__ = ["PipelineConfig", "SchemaConfig"]

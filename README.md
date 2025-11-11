@@ -1,14 +1,14 @@
 # Transaction GAN
 
 This project provides an end-to-end workflow for analysing, transforming, and generating
-synthetic financial transaction data using a lightweight Generative Adversarial Network (GAN)
-implemented entirely with the Python standard library. It includes:
+synthetic financial transaction data using the SDV PyTorch-based Conditional Tabular GAN (CTGAN).
+It includes:
 
 - Exploratory analysis utilities for numeric and categorical transaction features.
 - A preprocessing pipeline that standardises numeric fields and one-hot encodes categorical
   attributes.
-- A pure Python GAN for modelling transaction patterns and generating new samples without
-  external dependencies.
+- A CTGAN implementation (via `sdv.single_table.CTGANSynthesizer`) that respects categorical
+  dependencies and hierarchical groupings.
 - Evaluation helpers that compare summary statistics between real and synthetic datasets.
 - A command line interface and automated tests to validate the pipeline.
 
@@ -17,7 +17,7 @@ implemented entirely with the Python standard library. It includes:
 1. Ensure you are using Python 3.11 (the project targets 3.11 as its base interpreter). Create a virtual environment (optional) and install the project in editable mode if desired:
 
    ```bash
-   pip install -e .[dev]
+   pip install -e .[dev] "sdv[torch]"
    ```
 
 2. Run the pipeline using the included sample dataset:
@@ -35,23 +35,27 @@ implemented entirely with the Python standard library. It includes:
    pytest
    ```
 
-## Streamlit interface
+## PySide6 interface
 
-Launch the interactive app to run the pipeline end-to-end without writing code:
+Launch the desktop app to run the pipeline end-to-end without writing code:
 
 ```bash
-streamlit run src/transaction_gan/interfaces/streamlit_app.py
-# or
-python -m streamlit run src.transaction_gan.interfaces.streamlit_app
+python -m transaction_gan.interfaces.pyside_app
 ```
 
-The UI lets you:
+Steps:
 
-- Upload a local CSV (or reference an on-disk path) and preview the data.
-- Assign each column to the correct semantic type (ID, date, geo, continuous, categorical, drop).
-- Configure GAN hyperparameters and the number of synthetic rows to generate.
-- Download the synthetic dataset plus testing artefacts, and inspect KS/Wasserstein metrics,
-  categorical/continuous comparisons, and real-vs-synthetic plots directly in the browser.
+1. Install the GUI dependency (already included in `pip install -e .[dev] "sdv[torch]"`; otherwise run `pip install PySide6`).
+2. From the project root, activate your virtual environment.
+3. Execute the command above; a Qt window will open.
+4. Pick a CSV, configure columns/split settings, and click **Generate synthetic data**.
+
+The GUI lets you:
+
+- Select a CSV (or paste a path), preview the first few rows, and configure column roles.
+- Define hierarchical categorical groups in a free-form text box.
+- Tune CTGAN hyperparameters (samples, epochs, noise dimension, hidden size, learning rate).
+- Trigger dataset generation and inspect the resulting quality report directly inside the app.
 
 ## Configuration
 
@@ -64,12 +68,16 @@ A configuration file supports the following structure:
   "output_path": "data/synthetic_transactions.csv",
   "numeric_features": ["amount", "customer_age"],
   "categorical_features": ["merchant_category", "transaction_type"],
+  "hierarchical_categorical_groups": [
+    ["merchant_category", "transaction_type"]
+  ],
   "drop_features": ["transaction_id", "is_fraud"],
   "gan": {
     "noise_dim": 8,
     "hidden_dim": 16,
     "epochs": 200,
-    "learning_rate": 0.001
+    "learning_rate": 0.001,
+    "batch_size": 256
   },
   "samples_to_generate": 512
 }
@@ -88,16 +96,47 @@ Each column type is treated as follows:
   z-scores, and later inverse-transformed to their original scale.
 - **Categorical columns (`categorical_columns`)** – one-hot encoded with an explicit
   “unknown/empty” bucket. During inverse transform the most probable category is chosen.
-- **Date column (`date_column`)** – parsed from common date formats, converted to ordinal
-  integers, normalised, and emitted back as ISO strings (`YYYY-MM-DD`).
-- **Geographic column (`geo_column`)** – free-form addresses are resolved to latitude/
-  longitude pairs using a lightweight lookup (street → city → state → country). Both the
-  original text and the derived lat/lon features are preserved on inverse transform.
+  Use this for any string-like fields, including dates or addresses, if you need to retain
+  them in the synthetic output.
+- **Hierarchical categorical groups (`hierarchical_categorical_groups`)** – optional ordered
+  lists of categorical columns (e.g. country → state → city). Each hierarchy is one-hot
+  encoded as a single composite feature so the original combinations are preserved when the
+  GAN generates new rows. Synthetic data can only contain combinations observed in the real
+  data for those hierarchies.
 - **Drop columns (`drop_columns`)** – removed before training so sensitive identifiers
   never enter the GAN, but you can still include them in the final CSV ordering.
 
 When running via the CLI (`src/transaction_gan/cli.py`) or notebook code, pass these schema
-settings using `SchemaConfig` or the associated CLI flags (`--id-col`, `--geo-col`, etc.).
+settings using `SchemaConfig` or the associated CLI flags (`--id-col`, `--continuous`, `--categorical`,
+`--hierarchical`, etc.).
+
+### Train/holdout split & evaluation
+
+After trimming the dataset, the pipeline automatically splits rows into training and holdout
+partitions (80/20 by default, configurable via `--train-fraction` and `--split-seed`). CTGAN
+is fitted on the training subset only, and every evaluation artifact now includes:
+
+- Train vs synthetic metrics (KS/Wasserstein, histograms, categorical frequencies).
+- Holdout vs synthetic metrics to verify the model generalises to unseen rows.
+- A simple “real vs synthetic” classifier AUC (values near 0.5 mean the discriminator can’t
+  tell them apart).
+
+Both the CLI output and `*.metrics.json` file contain split summaries plus these scores, and the
+PySide6 GUI surfaces the key information in its results pane.
+
+### CTGAN training
+
+The generator now relies on SDV's PyTorch CTGAN implementation. Tune its behaviour through
+`GANTrainingConfig` fields (`noise_dim` → embedding dimension, `hidden_dim` → generator/discriminator
+layer widths, `epochs`, `learning_rate`, `batch_size`) either directly in code or in the `"gan"`
+block of a JSON configuration file. Install the necessary dependencies with:
+
+```bash
+pip install sdv[torch]
+```
+
+Lower settings speed up experimentation while higher ones usually improve fidelity (at the cost of
+extra GPU/CPU time).
 
 ### Testing & visualisation outputs
 

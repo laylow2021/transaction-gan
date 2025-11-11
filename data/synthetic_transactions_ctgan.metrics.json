@@ -1,0 +1,48 @@
+{
+  "quality_report": {
+    "train": {
+      "amount": {
+        "ks_statistic": 0.168875,
+        "wasserstein_distance": 539.9166489698664,
+        "ks_pass": false,
+        "wasserstein_pass": false
+      }
+    },
+    "holdout": {
+      "amount": {
+        "ks_statistic": 0.15549999999999997,
+        "wasserstein_distance": 489.36262772000026,
+        "ks_pass": false,
+        "wasserstein_pass": false
+      }
+    }
+  },
+  "evaluation": {
+    "train": {
+      "ks_statistics": {
+        "amount": 0.168875
+      },
+      "wasserstein_distances": {
+        "amount": 539.9166489698664
+      }
+    },
+    "holdout": {
+      "ks_statistics": {
+        "amount": 0.15549999999999997
+      },
+      "wasserstein_distances": {
+        "amount": 489.36262772000026
+      }
+    }
+  },
+  "real_vs_synthetic_auc": {
+    "train": 0.655841,
+    "holdout": 0.6445240000000001
+  },
+  "split_summary": {
+    "train_fraction": 0.8,
+    "train_size": 8000,
+    "holdout_size": 2000,
+    "split_seed": 42
+  }
+}

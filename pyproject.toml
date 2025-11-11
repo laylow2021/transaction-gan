@@ -5,11 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "transaction-gan"
 version = "0.1.0"
-description = "Synthetic transaction data generation pipeline using a pure Python GAN"
+description = "Synthetic transaction data generation pipeline powered by SDV's CTGAN"
 requires-python = ">=3.11"
 dependencies = [
   "matplotlib>=3.7",
-  "streamlit>=1.29",
+  "PySide6>=6.7",
+  "sdv>=1.12",
+  "torch>=2.5",
+  "scikit-learn>=1.5",
 ]
 
 [project.optional-dependencies]

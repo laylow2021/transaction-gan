@@ -2,42 +2,10 @@
 
 from __future__ import annotations
 
-import datetime as _dt
 from dataclasses import dataclass, field
-from typing import Dict, Iterable, List, Sequence
+from typing import Dict, List, Sequence, Set
 
 from .data_loader import TransactionRecord
-from .geo import GeoResolver
-
-DATE_FORMATS = [
-    "%Y-%m-%d",
-    "%Y/%m/%d",
-    "%d-%m-%Y",
-    "%m/%d/%Y",
-    "%Y-%m-%d %H:%M:%S",
-]
-
-
-def _parse_date(value: object) -> _dt.date | None:
-    if value is None:
-        return None
-    if isinstance(value, _dt.datetime):
-        return value.date()
-    if isinstance(value, _dt.date):
-        return value
-    text = str(value).strip()
-    if not text:
-        return None
-    try:
-        return _dt.datetime.fromisoformat(text).date()
-    except ValueError:
-        pass
-    for fmt in DATE_FORMATS:
-        try:
-            return _dt.datetime.strptime(text, fmt).date()
-        except ValueError:
-            continue
-    return None
 
 
 @dataclass
@@ -46,25 +14,25 @@ class TransactionPreprocessor:
 
     continuous_features: Sequence[str]
     categorical_features: Sequence[str]
-    date_feature: str | None = None
-    geo_feature: str | None = None
     id_feature: str | None = None
     drop_features: Sequence[str] = ()
-    geo_resolver: GeoResolver = field(default_factory=GeoResolver)
+    hierarchical_categorical_groups: Sequence[Sequence[str]] = ()
 
     continuous_stats: Dict[str, Dict[str, float]] = field(init=False, default_factory=dict)
     categorical_levels: Dict[str, List[str]] = field(init=False, default_factory=dict)
     feature_slices: Dict[str, slice] = field(init=False, default_factory=dict)
-    date_stats: Dict[str, float] | None = field(init=False, default=None)
-    geo_stats: Dict[str, Dict[str, float]] | None = field(init=False, default=None)
+    hierarchical_group_configs: List[Dict[str, object]] = field(init=False, default_factory=list)
+    hierarchical_columns: Set[str] = field(init=False, default_factory=set)
     output_dim: int = field(init=False, default=0)
 
     def fit(self, data: List[TransactionRecord]) -> "TransactionPreprocessor":
         self.continuous_stats = {}
         self.categorical_levels = {}
         self.feature_slices = {}
-        self.date_stats = None
-        self.geo_stats = None
+        self.hierarchical_group_configs = []
+        self.hierarchical_columns = {
+            column for group in self.hierarchical_categorical_groups for column in group
+        }
 
         start = 0
 
@@ -79,44 +47,27 @@ class TransactionPreprocessor:
             self.feature_slices[column] = slice(start, start + 1)
             start += 1
 
-        if self.date_feature:
-            ordinals = [date.toordinal() for row in data if (date := _parse_date(row.get(self.date_feature)))]
-            if ordinals:
-                mean = sum(ordinals) / len(ordinals)
-                variance = sum((value - mean) ** 2 for value in ordinals) / len(ordinals)
-                std = variance ** 0.5 or 1.0
-                slice_ = slice(start, start + 1)
-                self.date_stats = {"mean": mean, "std": std, "slice": slice_}
-                self.feature_slices[self.date_feature] = slice_
-                start += 1
-
-        if self.geo_feature:
-            lat_values: List[float] = []
-            lon_values: List[float] = []
-            for row in data:
-                lat, lon = self.geo_resolver.resolve(row.get(self.geo_feature))
-                lat_values.append(lat)
-                lon_values.append(lon)
-            if lat_values and lon_values:
-                def _stats(values: List[float]) -> Dict[str, float]:
-                    mean = sum(values) / len(values)
-                    variance = sum((value - mean) ** 2 for value in values) / len(values)
-                    std = variance ** 0.5 or 1.0
-                    return {"mean": mean, "std": std}
-
-                lat_stats = _stats(lat_values)
-                lon_stats = _stats(lon_values)
-                lat_slice = slice(start, start + 1)
-                lon_slice = slice(start + 1, start + 2)
-                self.geo_stats = {
-                    "lat": {**lat_stats, "slice": lat_slice},
-                    "lon": {**lon_stats, "slice": lon_slice},
-                }
-                self.feature_slices[f"{self.geo_feature}_lat"] = lat_slice
-                self.feature_slices[f"{self.geo_feature}_lon"] = lon_slice
-                start += 2
+        for group in self.hierarchical_categorical_groups:
+            columns = tuple(group)
+            if not columns:
+                continue
+            combinations = {
+                tuple(str(row.get(column, "")) for column in columns) for row in data
+            }
+            fallback = tuple("" for _ in columns)
+            levels = sorted(combinations)
+            if fallback in levels:
+                levels.pop(levels.index(fallback))
+            levels.append(fallback)
+            slice_ = slice(start, start + len(levels))
+            self.hierarchical_group_configs.append(
+                {"columns": columns, "levels": levels, "slice": slice_}
+            )
+            start += len(levels)
 
         for column in self.categorical_features:
+            if column in self.hierarchical_columns:
+                continue
             levels = sorted({str(row.get(column, "")) for row in data})
             if "" not in levels:
                 levels.append("")
@@ -142,20 +93,14 @@ class TransactionPreprocessor:
                 slice_ = stats["slice"]
                 features[slice_.start] = normalised
 
-            if self.date_stats and self.date_feature:
-                date = _parse_date(row.get(self.date_feature))
-                ordinal = date.toordinal() if date else self.date_stats["mean"]
-                normalised = (ordinal - self.date_stats["mean"]) / self.date_stats["std"]
-                slice_ = self.date_stats["slice"]
-                features[slice_.start] = normalised
-
-            if self.geo_stats and self.geo_feature:
-                lat, lon = self.geo_resolver.resolve(row.get(self.geo_feature))
-                for key, value in zip(("lat", "lon"), (lat, lon)):
-                    stats = self.geo_stats[key]
-                    normalised = (value - stats["mean"]) / stats["std"]
-                    slice_ = stats["slice"]
-                    features[slice_.start] = normalised
+            for config in self.hierarchical_group_configs:
+                key = tuple(str(row.get(column, "")) for column in config["columns"])
+                try:
+                    index = config["levels"].index(key)
+                except ValueError:
+                    index = len(config["levels"]) - 1
+                slice_ = config["slice"]
+                features[slice_.start + index] = 1.0
 
             for column, levels in self.categorical_levels.items():
                 value = str(row.get(column, ""))
@@ -185,21 +130,15 @@ class TransactionPreprocessor:
                 value = vector[slice_.start] * stats["std"] + stats["mean"]
                 row[column] = round(value, 5)
 
-            if self.date_stats and self.date_feature:
-                slice_ = self.date_stats["slice"]
-                value = vector[slice_.start] * self.date_stats["std"] + self.date_stats["mean"]
-                ordinal = int(round(value))
-                date_value = _dt.date.fromordinal(max(ordinal, 1))
-                row[self.date_feature] = date_value.isoformat()
-
-            if self.geo_stats and self.geo_feature:
-                lat_slice = self.geo_stats["lat"]["slice"]
-                lon_slice = self.geo_stats["lon"]["slice"]
-                latitude = vector[lat_slice.start] * self.geo_stats["lat"]["std"] + self.geo_stats["lat"]["mean"]
-                longitude = vector[lon_slice.start] * self.geo_stats["lon"]["std"] + self.geo_stats["lon"]["mean"]
-                row[f"{self.geo_feature}_lat"] = round(latitude, 5)
-                row[f"{self.geo_feature}_lon"] = round(longitude, 5)
-                row[self.geo_feature] = self.geo_resolver.reverse(latitude, longitude)
+            for config in self.hierarchical_group_configs:
+                slice_ = config["slice"]
+                window = vector[slice_.start : slice_.stop]
+                if not window:
+                    continue
+                max_index = max(range(len(window)), key=lambda idx: window[idx])
+                values = config["levels"][max_index]
+                for column, value in zip(config["columns"], values):
+                    row[column] = value
 
             for column, levels in self.categorical_levels.items():
                 slice_ = self.feature_slices[column]
@@ -215,6 +154,16 @@ class TransactionPreprocessor:
             records.append(row)
 
         return records
+
+    def categorical_input_slices(self) -> List[slice]:
+        """Return slices corresponding to categorical one-hot segments."""
+
+        slices: List[slice] = []
+        for column in self.categorical_levels:
+            slices.append(self.feature_slices[column])
+        for config in self.hierarchical_group_configs:
+            slices.append(config["slice"])
+        return slices
 
 
 __all__ = ["TransactionPreprocessor"]

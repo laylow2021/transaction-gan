@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from .config import SchemaConfig
 from .gan import GANTrainingConfig
@@ -68,14 +68,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Column that uniquely identifies a record.",
     )
     parser.add_argument(
-        "--geo-col",
-        default=DEFAULT_SCHEMA.geo_column,
-        help="Column containing address or geographic information.",
-    )
-    parser.add_argument(
-        "--date-col",
-        default=DEFAULT_SCHEMA.date_column,
-        help="Column containing transaction dates.",
+        "--hierarchical",
+        action="append",
+        help=(
+            "Comma-separated categorical columns that form a hierarchy "
+            "(e.g. 'country,state,city'). Provide multiple times for multiple hierarchies."
+        ),
     )
     parser.add_argument(
         "--epochs",
@@ -132,6 +130,18 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         help="Optional path to store the testing report visual summary.",
     )
+    parser.add_argument(
+        "--train-fraction",
+        type=float,
+        default=0.8,
+        help="Portion of rows reserved for GAN training (0-1].",
+    )
+    parser.add_argument(
+        "--split-seed",
+        type=int,
+        default=42,
+        help="Random seed used while shuffling before the train/holdout split.",
+    )
     return parser
 
 
@@ -143,6 +153,17 @@ def run_cli(args: argparse.Namespace | None = None) -> Dict[str, Any]:
         config = load_config(parsed.config)
         result = run_from_config(config)
     else:
+        def _parse_hierarchical(raw: List[str] | None) -> List[tuple[str, ...]]:
+            if raw is None:
+                return [tuple(group) for group in DEFAULT_SCHEMA.hierarchical_categorical_groups]
+            groups: List[tuple[str, ...]] = []
+            for entry in raw:
+                columns = [column.strip() for column in entry.split(",") if column.strip()]
+                if len(columns) >= 2:
+                    groups.append(tuple(columns))
+            return groups
+
+        hierarchical_groups = _parse_hierarchical(parsed.hierarchical)
         gan_config = GANTrainingConfig(
             noise_dim=parsed.noise_dim,
             hidden_dim=parsed.hidden_dim,
@@ -151,11 +172,10 @@ def run_cli(args: argparse.Namespace | None = None) -> Dict[str, Any]:
         )
         schema = SchemaConfig(
             id_column=parsed.id_col,
-            geo_column=parsed.geo_col,
-            date_column=parsed.date_col,
             continuous_columns=parsed.continuous,
             categorical_columns=parsed.categorical,
             drop_columns=parsed.drop,
+            hierarchical_categorical_groups=hierarchical_groups,
         )
         result = generate_synthetic_transactions(
             parsed.data_path,
@@ -168,6 +188,9 @@ def run_cli(args: argparse.Namespace | None = None) -> Dict[str, Any]:
             training_history_path=parsed.history_path,
             testing_report_path=parsed.testing_path,
             testing_visualization_path=parsed.testing_plot_path,
+            hierarchical_categorical_groups=hierarchical_groups,
+            train_fraction=parsed.train_fraction,
+            split_seed=parsed.split_seed,
         )
 
     print(json.dumps(result, indent=2, cls=EnhancedJSONEncoder))
