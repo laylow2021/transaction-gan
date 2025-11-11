@@ -82,15 +82,21 @@ def _write_text_summary(path: Path, columns: List[str], real: List[float], synth
 
 
 def plot_training_history(
-    history: Dict[str, List[float]],
+    history: Dict[str, List[float]] | List[Dict[str, float]],
     *,
     output_path: Path | str,
 ) -> Path:
     """Plot generator/discriminator losses over epochs."""
 
-    generator = history.get("generator", [])
-    discriminator = history.get("discriminator", [])
-    epochs = list(range(1, max(len(generator), len(discriminator)) + 1))
+    if isinstance(history, list):
+        # Fallback for legacy history shape (list of records)
+        generator = [record.get("generator_loss", 0.0) for record in history]
+        discriminator = [record.get("discriminator_loss", 0.0) for record in history]
+        epochs = [int(record.get("epoch", idx + 1)) for idx, record in enumerate(history)]
+    else:
+        generator = history.get("generator", [])
+        discriminator = history.get("discriminator", [])
+        epochs = history.get("epochs") or list(range(1, max(len(generator), len(discriminator)) + 1))
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)

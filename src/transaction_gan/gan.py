@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable, List, Sequence
+from typing import Dict, Iterable, List, Sequence
 
 import pandas as pd
 
@@ -43,7 +43,7 @@ class SyntheticDataGenerator:
         self.column_names = [f"feature_{index}" for index in range(output_dim)]
         self.metadata: SingleTableMetadata | None = None
         self.model: CTGANSynthesizer | None = None
-        self._history: List[dict[str, float]] = []
+        self._history: Dict[str, List[float]] = {"epochs": [], "generator": [], "discriminator": []}
         self._trained = False
         self._categorical_slices = list(categorical_slices or [])  # kept for compatibility
 
@@ -80,17 +80,21 @@ class SyntheticDataGenerator:
         try:
             loss_df = self.model.get_loss_values()
         except AttributeError:  # SDV < 1.10
-            self._history = []
+            self._history = {"epochs": [], "generator": [], "discriminator": []}
         else:
             records = loss_df.to_dict("records")
-            self._history = [
-                {
-                    "epoch": int(record.get("Epoch", index + 1)),
-                    "generator_loss": float(record.get("Generator Loss", 0.0)),
-                    "discriminator_loss": float(record.get("Discriminator Loss", 0.0)),
-                }
-                for index, record in enumerate(records)
-            ]
+            epochs: List[float] = []
+            generator: List[float] = []
+            discriminator: List[float] = []
+            for index, record in enumerate(records):
+                epochs.append(float(record.get("Epoch", index + 1)))
+                generator.append(float(record.get("Generator Loss", 0.0)))
+                discriminator.append(float(record.get("Discriminator Loss", 0.0)))
+            self._history = {
+                "epochs": epochs,
+                "generator": generator,
+                "discriminator": discriminator,
+            }
 
     def generate(self, rows: int) -> List[List[float]]:
         if not self._trained:
@@ -100,8 +104,12 @@ class SyntheticDataGenerator:
         samples = self.model.sample(num_rows=rows)
         return samples[self.column_names].to_numpy(dtype="float32").tolist()
 
-    def get_training_history(self) -> List[dict[str, float]]:
-        return list(self._history)
+    def get_training_history(self) -> Dict[str, List[float]]:
+        return {
+            "epochs": list(self._history.get("epochs", [])),
+            "generator": list(self._history.get("generator", [])),
+            "discriminator": list(self._history.get("discriminator", [])),
+        }
 
 
 __all__ = ["GANTrainingConfig", "SyntheticDataGenerator"]

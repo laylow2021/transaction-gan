@@ -1,18 +1,30 @@
 {
   "quality_report": {
     "train": {
+      "customer_age": {
+        "ks_statistic": 0.0871770833333333,
+        "wasserstein_distance": 2.970961164791595,
+        "ks_pass": true,
+        "wasserstein_pass": false
+      },
       "amount": {
-        "ks_statistic": 0.168875,
-        "wasserstein_distance": 539.9166489698664,
-        "ks_pass": false,
+        "ks_statistic": 0.07092708333333331,
+        "wasserstein_distance": 150.75768136509723,
+        "ks_pass": true,
         "wasserstein_pass": false
       }
     },
     "holdout": {
+      "customer_age": {
+        "ks_statistic": 0.0914375,
+        "wasserstein_distance": 3.3937358824999757,
+        "ks_pass": true,
+        "wasserstein_pass": false
+      },
       "amount": {
-        "ks_statistic": 0.15549999999999997,
-        "wasserstein_distance": 489.36262772000026,
-        "ks_pass": false,
+        "ks_statistic": 0.08184374999999999,
+        "wasserstein_distance": 179.02143479968512,
+        "ks_pass": true,
         "wasserstein_pass": false
       }
     }
@@ -20,29 +32,33 @@
   "evaluation": {
     "train": {
       "ks_statistics": {
-        "amount": 0.168875
+        "amount": 0.07092708333333331,
+        "customer_age": 0.0871770833333333
       },
       "wasserstein_distances": {
-        "amount": 539.9166489698664
+        "amount": 150.75768136509723,
+        "customer_age": 2.970961164791595
       }
     },
     "holdout": {
       "ks_statistics": {
-        "amount": 0.15549999999999997
+        "amount": 0.08184374999999999,
+        "customer_age": 0.0914375
       },
       "wasserstein_distances": {
-        "amount": 489.36262772000026
+        "amount": 179.02143479968512,
+        "customer_age": 3.3937358824999757
       }
     }
   },
   "real_vs_synthetic_auc": {
-    "train": 0.655841,
-    "holdout": 0.6445240000000001
+    "train": 0.72332763671875,
+    "holdout": 0.7100372314453125
   },
   "split_summary": {
-    "train_fraction": 0.8,
-    "train_size": 8000,
-    "holdout_size": 2000,
-    "split_seed": 42
+    "train_fraction": 0.6,
+    "train_size": 6000,
+    "holdout_size": 4000,
+    "split_seed": 123
   }
 }
