@@ -13,6 +13,7 @@ try:  # pragma: no cover - GUI dependency is optional
     from PySide6.QtWidgets import (
         QApplication,
         QComboBox,
+        QCheckBox,
         QFileDialog,
         QFormLayout,
         QGroupBox,
@@ -205,6 +206,18 @@ class TransactionGanWindow(QMainWindow):
         self.split_seed_spin.setValue(42)
         form.addRow("Split seed", self.split_seed_spin)
 
+        self.auto_tune_checkbox = QCheckBox("Auto-tune CTGAN")
+        form.addRow(self.auto_tune_checkbox)
+
+        self.validation_fraction_spin = QDoubleSpinBox()
+        self.validation_fraction_spin.setRange(0.05, 0.5)
+        self.validation_fraction_spin.setSingleStep(0.05)
+        self.validation_fraction_spin.setValue(0.2)
+        form.addRow("Validation fraction", self.validation_fraction_spin)
+
+        self.tstr_target_edit = QLineEdit("is_fraud")
+        form.addRow("TSTR target column", self.tstr_target_edit)
+
         self.output_path_edit = QLineEdit(str(Path("data/synthetic_transactions_gui.csv")))
         form.addRow("Output CSV", self.output_path_edit)
 
@@ -354,6 +367,9 @@ class TransactionGanWindow(QMainWindow):
                 samples_to_generate=int(self.samples_spin.value()),
                 train_fraction=float(self.train_fraction_spin.value()),
                 split_seed=int(self.split_seed_spin.value()),
+                auto_tune=self.auto_tune_checkbox.isChecked(),
+                validation_fraction=float(self.validation_fraction_spin.value()),
+                tstr_target=self.tstr_target_edit.text().strip() or None,
             )
         except Exception as exc:  # pragma: no cover - user feedback
             QMessageBox.critical(self, "Generation failed", str(exc))

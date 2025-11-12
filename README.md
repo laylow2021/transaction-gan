@@ -120,6 +120,14 @@ is fitted on the training subset only, and every evaluation artifact now include
 - Holdout vs synthetic metrics to verify the model generalises to unseen rows.
 - A simple “real vs synthetic” classifier AUC (values near 0.5 mean the discriminator can’t
   tell them apart).
+- Optional train-on-synthetic / test-on-real (TSTR) scores when you provide a target column
+  (e.g., `--tstr-target is_fraud`).
+
+Turn on the built-in CTGAN tuner (`--auto-tune`) to automatically evaluate a small grid of
+hyperparameters using a validation slice of the training data. The pipeline then retrains on
+the full training split with the best-performing configuration and records the tuning history
+inside `*.metrics.json`. Provide a custom JSON list via `--tuning-grid path/to/grid.json` if you
+only want to try a handful of overrides; otherwise the default search space is used.
 
 Both the CLI output and `*.metrics.json` file contain split summaries plus these scores, and the
 PySide6 GUI surfaces the key information in its results pane.

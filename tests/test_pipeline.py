@@ -72,6 +72,8 @@ def test_pipeline_runs_end_to_end(tmp_path):
     assert set(result["evaluation"]) >= {"train", "holdout"}
     assert result["split_summary"]["train_size"] > 0
     assert result["real_vs_synthetic_auc"]["train"] <= 1.0
+    assert "tstr_scores" in result
+    assert "selected_gan_config" in result
 
     metrics_payload = json.loads(metrics_path.read_text())
     assert "split_summary" in metrics_payload

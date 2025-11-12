@@ -142,6 +142,26 @@ def build_parser() -> argparse.ArgumentParser:
         default=42,
         help="Random seed used while shuffling before the train/holdout split.",
     )
+    parser.add_argument(
+        "--auto-tune",
+        action="store_true",
+        help="Evaluate multiple CTGAN configs using a validation split before final training.",
+    )
+    parser.add_argument(
+        "--validation-fraction",
+        type=float,
+        default=0.2,
+        help="Fraction of the training subset reserved for tuning validation.",
+    )
+    parser.add_argument(
+        "--tstr-target",
+        help="Categorical column to use for train-on-synthetic/test-on-real scoring.",
+    )
+    parser.add_argument(
+        "--tuning-grid",
+        type=Path,
+        help="Optional JSON file containing a list of GAN config overrides for auto-tuning.",
+    )
     return parser
 
 
@@ -177,6 +197,10 @@ def run_cli(args: argparse.Namespace | None = None) -> Dict[str, Any]:
             drop_columns=parsed.drop,
             hierarchical_categorical_groups=hierarchical_groups,
         )
+        tuning_overrides = None
+        if parsed.tuning_grid:
+            tuning_overrides = json.loads(parsed.tuning_grid.read_text())
+
         result = generate_synthetic_transactions(
             parsed.data_path,
             output_path=parsed.output,
@@ -191,6 +215,10 @@ def run_cli(args: argparse.Namespace | None = None) -> Dict[str, Any]:
             hierarchical_categorical_groups=hierarchical_groups,
             train_fraction=parsed.train_fraction,
             split_seed=parsed.split_seed,
+            auto_tune=parsed.auto_tune,
+            validation_fraction=parsed.validation_fraction,
+            tstr_target=parsed.tstr_target,
+            tuning_overrides=tuning_overrides,
         )
 
     print(json.dumps(result, indent=2, cls=EnhancedJSONEncoder))

@@ -1,0 +1,66 @@
+{
+  "quality_report": {
+    "train": {
+      "amount": {
+        "ks_statistic": 0.11420000000000002,
+        "wasserstein_distance": 367.78218367505133,
+        "ks_pass": true,
+        "wasserstein_pass": false
+      }
+    },
+    "validation": null,
+    "holdout": {
+      "amount": {
+        "ks_statistic": 0.10469999999999999,
+        "wasserstein_distance": 333.4095076750334,
+        "ks_pass": true,
+        "wasserstein_pass": false
+      }
+    }
+  },
+  "evaluation": {
+    "train": {
+      "ks_statistics": {
+        "amount": 0.11420000000000002
+      },
+      "wasserstein_distances": {
+        "amount": 367.78218367505133
+      }
+    },
+    "validation": null,
+    "holdout": {
+      "ks_statistics": {
+        "amount": 0.10469999999999999
+      },
+      "wasserstein_distances": {
+        "amount": 333.4095076750334
+      }
+    }
+  },
+  "real_vs_synthetic_auc": {
+    "train": 0.60054425,
+    "holdout": 0.60296275
+  },
+  "split_summary": {
+    "train_fraction": 0.5,
+    "train_size": 5000,
+    "holdout_size": 5000,
+    "split_seed": 123
+  },
+  "tstr_scores": {
+    "accuracy": 0.9496,
+    "f1": 0.48707427164546574
+  },
+  "selected_gan_config": {
+    "noise_dim": 64,
+    "hidden_dim": 128,
+    "epochs": 100,
+    "learning_rate": 0.0002,
+    "batch_size": 250,
+    "pac": 1,
+    "generator_dims": null,
+    "discriminator_dims": null,
+    "use_cuda": true
+  },
+  "tuning_history": []
+}

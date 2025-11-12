@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import csv
 import json
+from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Sequence
 
 from .analysis import describe_transactions
 from .config import PipelineConfig, SchemaConfig
@@ -13,9 +14,10 @@ from .data_loader import load_transactions
 from .data_split import split_records
 from .evaluation import build_quality_report, compare_statistics
 from .gan import GANTrainingConfig, SyntheticDataGenerator
-from .metrics import real_vs_synthetic_auc
+from .metrics import real_vs_synthetic_auc, tstr_scores
 from .preprocessing import TransactionPreprocessor
 from .testing import generate_testing_report
+from .tuning import DEFAULT_TUNING_GRID, auto_tune_gan
 from .visualization import (
     plot_numeric_comparison,
     plot_testing_report as plot_testing_visual,
@@ -158,6 +160,10 @@ def generate_synthetic_transactions(
     testing_visualization_path: Path | str | None = None,
     train_fraction: float = 0.8,
     split_seed: int = 42,
+    auto_tune: bool = False,
+    validation_fraction: float = 0.2,
+    tuning_overrides: Sequence[Dict[str, object]] | None = None,
+    tstr_target: str | None = None,
 ) -> Dict[str, object]:
     """Run the full analysis, training, generation, and evaluation pipeline."""
 
@@ -187,27 +193,66 @@ def generate_synthetic_transactions(
     if not train_rows:
         raise ValueError("No rows were available for training after preprocessing.")
 
+    validation_rows: List[Dict[str, str]] = []
+    core_train_rows = list(train_rows)
+    if 0.0 < validation_fraction < 1.0 and auto_tune and len(train_rows) > 5:
+        core_train_rows, validation_rows = split_records(
+            train_rows,
+            train_fraction=1.0 - validation_fraction,
+            seed=split_seed + 1,
+        )
+        if not core_train_rows:
+            core_train_rows = list(train_rows)
+
     preprocessor = _prepare_preprocessor(resolved_schema)
-    processed_train = preprocessor.fit_transform(train_rows)
+    preprocessor.fit(train_rows)
+    processed_train_full = preprocessor.transform(train_rows)
     processed_holdout = preprocessor.transform(holdout_rows) if holdout_rows else []
+    processed_core = preprocessor.transform(core_train_rows)
+    processed_validation = (
+        preprocessor.transform(validation_rows) if validation_rows else []
+    )
 
     categorical_slices = preprocessor.categorical_input_slices()
+    selected_config = gan_config
+    tuning_history: List[Dict[str, object]] = []
+    if auto_tune and processed_validation and validation_rows:
+        selected_config, tuning_history = auto_tune_gan(
+            processed_train=processed_core,
+            processed_validation=processed_validation,
+            validation_records=validation_rows,
+            base_config=gan_config,
+            preprocessor=preprocessor,
+            categorical_slices=categorical_slices,
+            numeric_features=resolved_schema.continuous_columns,
+            tuning_grid=tuning_overrides,
+        )
+
     gan = SyntheticDataGenerator(
-        len(processed_train[0]),
-        gan_config,
+        len(processed_train_full[0]),
+        selected_config,
         categorical_slices=categorical_slices,
     )
-    gan.train(processed_train)
+    gan.train(processed_train_full)
     training_history = gan.get_training_history()
 
     synthetic_matrix = gan.generate(samples_to_generate)
     synthetic_records = preprocessor.inverse_transform(synthetic_matrix)
-    round_trip_preview = preprocessor.inverse_transform(processed_train[:5])
+    round_trip_preview = preprocessor.inverse_transform(processed_train_full[:5])
 
     evaluation_train = compare_statistics(
         train_rows,
         synthetic_records,
         numeric_features=resolved_schema.continuous_columns,
+    )
+    evaluation_validation = (
+        compare_statistics(
+            validation_rows,
+            synthetic_records,
+            numeric_features=resolved_schema.continuous_columns,
+        )
+        if validation_rows
+        else None
     )
     evaluation_holdout = (
         compare_statistics(
@@ -220,10 +265,14 @@ def generate_synthetic_transactions(
     )
     evaluation = {
         "train": evaluation_train,
+        "validation": evaluation_validation,
         "holdout": evaluation_holdout,
     }
     quality_report = {
         "train": build_quality_report(evaluation_train),
+        "validation": build_quality_report(evaluation_validation)
+        if evaluation_validation
+        else None,
         "holdout": build_quality_report(evaluation_holdout) if evaluation_holdout else None,
     }
 
@@ -231,6 +280,15 @@ def generate_synthetic_transactions(
         train_rows,
         synthetic_records,
         schema=resolved_schema,
+    )
+    testing_report_validation = (
+        generate_testing_report(
+            validation_rows,
+            synthetic_records,
+            schema=resolved_schema,
+        )
+        if validation_rows
+        else None
     )
     testing_report_holdout = (
         generate_testing_report(
@@ -243,14 +301,24 @@ def generate_synthetic_transactions(
     )
     testing_reports = {
         "train": testing_report_train,
+        "validation": testing_report_validation,
         "holdout": testing_report_holdout,
     }
 
-    auc_train = real_vs_synthetic_auc(processed_train, synthetic_matrix)
+    auc_train = real_vs_synthetic_auc(processed_train_full, synthetic_matrix)
     auc_holdout = (
         real_vs_synthetic_auc(processed_holdout, synthetic_matrix) if processed_holdout else None
     )
     auc_scores = {"train": auc_train, "holdout": auc_holdout}
+
+    tstr = None
+    if tstr_target:
+        tstr = tstr_scores(
+            real_train=train_rows,
+            synthetic_records=synthetic_records,
+            holdout_records=holdout_rows or [],
+            target_column=tstr_target,
+        )
 
     split_summary = {
         "train_fraction": train_fraction,
@@ -276,10 +344,14 @@ def generate_synthetic_transactions(
                 "quality_report": quality_report,
                 "evaluation": {
                     "train": evaluation_train.to_dict(),
+                    "validation": evaluation_validation.to_dict() if evaluation_validation else None,
                     "holdout": evaluation_holdout.to_dict() if evaluation_holdout else None,
                 },
                 "real_vs_synthetic_auc": auc_scores,
                 "split_summary": split_summary,
+                "tstr_scores": tstr,
+                "selected_gan_config": asdict(selected_config),
+                "tuning_history": tuning_history,
             },
             handle,
             indent=2,
@@ -342,6 +414,9 @@ def generate_synthetic_transactions(
         "testing_report": testing_reports,
         "real_vs_synthetic_auc": auc_scores,
         "split_summary": split_summary,
+        "tstr_scores": tstr,
+        "selected_gan_config": asdict(selected_config),
+        "tuning_history": tuning_history,
     }
 
 
@@ -404,6 +479,10 @@ def load_config(path: Path | str) -> PipelineConfig:
         testing_visualization_path=Path(raw["testing_visualization_path"]) if raw.get("testing_visualization_path") else None,
         train_fraction=float(raw.get("train_fraction", 0.8)),
         split_seed=int(raw.get("split_seed", 42)),
+        auto_tune=bool(raw.get("auto_tune", False)),
+        validation_fraction=float(raw.get("validation_fraction", 0.2)),
+        tuning_overrides=raw.get("tuning_overrides"),
+        tstr_target=raw.get("tstr_target"),
     )
     return config
 
@@ -424,6 +503,10 @@ def run_from_config(config: PipelineConfig) -> Dict[str, object]:
         testing_visualization_path=config.testing_visualization_path,
         train_fraction=config.train_fraction,
         split_seed=config.split_seed,
+        auto_tune=config.auto_tune,
+        validation_fraction=config.validation_fraction,
+        tuning_overrides=config.tuning_overrides,
+        tstr_target=config.tstr_target,
     )
 
 

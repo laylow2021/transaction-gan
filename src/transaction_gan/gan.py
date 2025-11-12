@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Sequence
+import warnings
 
 import pandas as pd
+import torch
 
 try:  # pragma: no cover - import guard for optional dependency
     from sdv.metadata import SingleTableMetadata
@@ -25,7 +27,11 @@ class GANTrainingConfig:
     hidden_dim: int = 256  # used for both generator/discriminator layer widths
     epochs: int = 300
     learning_rate: float = 2e-4
-    batch_size: int = 512
+    batch_size: int = 500
+    pac: int = 10
+    generator_dims: Sequence[int] | None = None
+    discriminator_dims: Sequence[int] | None = None
+    use_cuda: bool = False
 
 
 class SyntheticDataGenerator:
@@ -50,16 +56,26 @@ class SyntheticDataGenerator:
     def _build_model(self) -> CTGANSynthesizer:
         if self.metadata is None:
             raise RuntimeError("Metadata must be initialised before building the CTGAN model.")
-        hidden_tuple = (self.config.hidden_dim, self.config.hidden_dim)
+        generator_dims = tuple(self.config.generator_dims) if self.config.generator_dims else (
+            self.config.hidden_dim,
+            self.config.hidden_dim,
+        )
+        discriminator_dims = tuple(self.config.discriminator_dims) if self.config.discriminator_dims else (
+            self.config.hidden_dim,
+            self.config.hidden_dim,
+        )
+        use_cuda = self.config.use_cuda and torch.cuda.is_available()
         return CTGANSynthesizer(
             metadata=self.metadata,
             epochs=self.config.epochs,
             batch_size=self.config.batch_size,
             embedding_dim=self.config.noise_dim,
-            generator_dim=hidden_tuple,
-            discriminator_dim=hidden_tuple,
+            generator_dim=generator_dims,
+            discriminator_dim=discriminator_dims,
             generator_lr=self.config.learning_rate,
             discriminator_lr=self.config.learning_rate,
+            pac=self.config.pac,
+            cuda=use_cuda,
         )
 
     def _to_dataframe(self, matrix: Sequence[Sequence[float]]) -> pd.DataFrame:
@@ -75,7 +91,12 @@ class SyntheticDataGenerator:
             self.metadata = metadata
         if self.model is None:
             self.model = self._build_model()
-        self.model.fit(df)
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                message="PerformanceAlert: Using the CTGANSynthesizer on this data is not recommended.*",
+            )
+            self.model.fit(df)
         self._trained = True
         try:
             loss_df = self.model.get_loss_values()

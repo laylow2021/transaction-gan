@@ -130,6 +130,99 @@ def plot_training_history(
     return output_path
 
 
+def _plot_categorical_axis(ax, name: str, freq_real: Dict[str, int], freq_synth: Dict[str, int]) -> None:
+    labels = sorted(set(freq_real) | set(freq_synth))
+    positions = range(len(labels))
+    real_counts = [freq_real.get(label, 0) for label in labels]
+    synth_counts = [freq_synth.get(label, 0) for label in labels]
+    max_real = max(real_counts) if real_counts else 0
+    max_synth = max(synth_counts) if synth_counts else 0
+    min_non_zero = min([value for value in real_counts + synth_counts if value > 0], default=1)
+    ratio = max(max_real, max_synth) / min_non_zero if min_non_zero else 1
+
+    width = 0.4
+    if ratio <= 3:
+        ax.bar([p - width / 2 for p in positions], real_counts, width=width, label="Real")
+        ax.bar([p + width / 2 for p in positions], synth_counts, width=width, label="Synthetic")
+        ax.set_ylabel("Count")
+        ax.legend()
+    else:
+        primary = ax
+        secondary = primary.twinx()
+        primary.bar(
+            [p - width / 2 for p in positions],
+            real_counts,
+            width=width,
+            label="Real",
+            color="#1f77b4",
+        )
+        secondary.bar(
+            [p + width / 2 for p in positions],
+            synth_counts,
+            width=width,
+            label="Synthetic",
+            color="#ff7f0e",
+            alpha=0.7,
+        )
+        primary.set_ylabel("Real count")
+        secondary.set_ylabel("Synthetic count")
+        handles, labels_real = primary.get_legend_handles_labels()
+        handles2, labels_synth = secondary.get_legend_handles_labels()
+        primary.legend(handles + handles2, labels_real + labels_synth)
+    ax.set_xticks(list(positions))
+    ax.set_xticklabels(labels, rotation=30, ha="right")
+    ax.set_title(f"Categorical frequency: {name}")
+
+
+def _plot_continuous_axis(ax, name: str, real_hist: Dict[str, List[float]], synth_hist: Dict[str, List[float]]) -> None:
+    bins = real_hist["bins"]
+    real_counts = real_hist["counts"]
+    synth_counts = synth_hist["counts"]
+    if not bins:
+        bins = list(range(len(real_counts) + 1))
+    centers = [(bins[i] + bins[i + 1]) / 2 for i in range(len(bins) - 1)]
+    real_total = sum(real_counts) or 1
+    synth_total = sum(synth_counts) or 1
+    real_pct = [(value / real_total) * 100 for value in real_counts]
+    synth_pct = [(value / synth_total) * 100 for value in synth_counts]
+    ax.plot(centers, real_pct, label="Real %", linewidth=2)
+    ax.plot(centers, synth_pct, label="Synthetic %", linewidth=2, linestyle="--")
+    ax.set_title(f"Continuous histogram (%): {name}")
+    ax.set_ylabel("Percentage of samples")
+    ax.set_xlabel(name)
+    ax.legend()
+
+
+def _plot_grouped_axis(
+    ax,
+    cat_name: str,
+    cont_name: str,
+    cont_map: Dict[str, Dict[str, Dict[str, List[float]]]],
+) -> None:
+    categories = list(cont_map.keys())[:4]
+    if not categories:
+        ax.text(0.5, 0.5, "No grouped data", ha="center", va="center")
+        ax.set_axis_off()
+        return
+    for category in categories:
+        real_hist = cont_map[category]["real"]
+        synth_hist = cont_map[category]["synthetic"]
+        bins = real_hist["bins"]
+        if not bins:
+            continue
+        centers = [(bins[i] + bins[i + 1]) / 2 for i in range(len(bins) - 1)]
+        real_total = sum(real_hist["counts"]) or 1
+        synth_total = sum(synth_hist["counts"]) or 1
+        real_pct = [(value / real_total) * 100 for value in real_hist["counts"]]
+        synth_pct = [(value / synth_total) * 100 for value in synth_hist["counts"]]
+        ax.plot(centers, real_pct, label=f"{category} · Real", linestyle="-")
+        ax.plot(centers, synth_pct, label=f"{category} · Synth", linestyle="--")
+    ax.set_title(f"{cont_name} by {cat_name} (top {len(categories)})")
+    ax.set_ylabel("Percentage of samples")
+    ax.set_xlabel(cont_name)
+    ax.legend(fontsize=8)
+
+
 def plot_testing_report(
     testing_report: Dict[str, object],
     *,
@@ -137,57 +230,75 @@ def plot_testing_report(
     continuous_columns: Sequence[str],
     output_path: Path | str,
 ) -> Path:
-    """Create a simple visual summary from the stored testing report."""
+    """Create a visual summary covering every available testing metric."""
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     categorical_data: Dict[str, Dict[str, Dict[str, int]]] = testing_report.get("categorical_frequencies", {})  # type: ignore[assignment]
     continuous_data: Dict[str, Dict[str, Dict[str, List[float]]]] = testing_report.get("continuous_histograms", {})  # type: ignore[assignment]
+    grouped_data: Dict[str, Dict[str, Dict[str, Dict[str, List[float]]]]] = testing_report.get("grouped_histograms", {})  # type: ignore[assignment]
 
-    target_cat = next((column for column in categorical_columns if column in categorical_data), None)
-    target_cont = next((column for column in continuous_columns if column in continuous_data), None)
+    available_cats = [column for column in categorical_columns if column in categorical_data]
+    available_cont = [column for column in continuous_columns if column in continuous_data]
+    available_pairs: List[tuple[str, str]] = []
+    for categorical in categorical_columns:
+        cont_map = grouped_data.get(categorical, {})
+        for cont in continuous_columns:
+            if cont in cont_map:
+                available_pairs.append((categorical, cont))
 
     if plt is None:
         lines = ["testing_plot_summary"]
-        lines.append(f"categorical_column={target_cat}")
-        lines.append(f"continuous_column={target_cont}")
-        output_path.write_text("\n".join(lines), encoding="utf8")
+        for column in available_cats:
+            lines.append(f"categorical_column={column}")
+        for column in available_cont:
+            lines.append(f"continuous_column={column}")
+        for cat, cont in available_pairs:
+            lines.append(f"grouped_pair={cat}:{cont}")
+        output_path.write_text("\n".join(lines) or "No data available", encoding="utf8")
         return output_path
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-
-    if target_cat:
-        freq_real = categorical_data[target_cat]["real"]
-        freq_synth = categorical_data[target_cat]["synthetic"]
-        labels = sorted(set(freq_real) | set(freq_synth))
-        real_counts = [freq_real.get(label, 0) for label in labels]
-        synth_counts = [freq_synth.get(label, 0) for label in labels]
-        positions = range(len(labels))
-        axes[0].bar([p - 0.15 for p in positions], real_counts, width=0.3, label="Real")
-        axes[0].bar([p + 0.15 for p in positions], synth_counts, width=0.3, label="Synthetic")
-        axes[0].set_xticks(list(positions))
-        axes[0].set_xticklabels(labels, rotation=30, ha="right")
-        axes[0].set_title(f"Categorical frequency: {target_cat}")
-        axes[0].legend()
+    panels = len(available_cats) + len(available_cont) + len(available_pairs)
+    if panels == 0:
+        panels = 1
+    fig, axes = plt.subplots(panels, 1, figsize=(12, max(4, 3 * panels)))
+    if panels == 1:
+        axes = [axes]  # type: ignore[assignment]
     else:
-        axes[0].text(0.5, 0.5, "No categorical data", ha="center", va="center")
+        axes = list(axes)  # type: ignore[assignment]
+
+    axis_index = 0
+    for column in available_cats:
+        _plot_categorical_axis(
+            axes[axis_index],
+            column,
+            categorical_data[column]["real"],
+            categorical_data[column]["synthetic"],
+        )
+        axis_index += 1
+
+    for column in available_cont:
+        _plot_continuous_axis(
+            axes[axis_index],
+            column,
+            continuous_data[column]["real"],
+            continuous_data[column]["synthetic"],
+        )
+        axis_index += 1
+
+    for cat_name, cont_name in available_pairs:
+        _plot_grouped_axis(
+            axes[axis_index],
+            cat_name,
+            cont_name,
+            grouped_data[cat_name][cont_name],
+        )
+        axis_index += 1
+
+    if panels == 1 and axis_index == 0:
+        axes[0].text(0.5, 0.5, "No testing data available", ha="center", va="center")
         axes[0].set_axis_off()
-
-    if target_cont:
-        real_hist = continuous_data[target_cont]["real"]
-        synth_hist = continuous_data[target_cont]["synthetic"]
-        bins = real_hist["bins"]
-        real_counts = real_hist["counts"]
-        synth_counts = synth_hist["counts"]
-        centers = [(bins[i] + bins[i + 1]) / 2 for i in range(len(bins) - 1)]
-        axes[1].plot(centers, real_counts, label="Real")
-        axes[1].plot(centers, synth_counts, label="Synthetic")
-        axes[1].set_title(f"Continuous histogram: {target_cont}")
-        axes[1].legend()
-    else:
-        axes[1].text(0.5, 0.5, "No continuous data", ha="center", va="center")
-        axes[1].set_axis_off()
 
     fig.tight_layout()
     fig.savefig(output_path, dpi=150)

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Dict, Iterable, Sequence
 
 from .gan import GANTrainingConfig
 
@@ -36,6 +36,10 @@ class PipelineConfig:
     testing_visualization_path: Path | None = None
     train_fraction: float = 0.8
     split_seed: int = 42
+    auto_tune: bool = False
+    validation_fraction: float = 0.2
+    tuning_overrides: Sequence[Dict[str, object]] | None = None
+    tstr_target: str | None = None
 
 
 __all__ = ["PipelineConfig", "SchemaConfig"]

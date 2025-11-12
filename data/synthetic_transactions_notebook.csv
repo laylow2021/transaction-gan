@@ -1,0 +1,2001 @@
+transaction_id,amount,merchant_category,is_fraud
+synthetic_1,4241.48732,Travel,0
+synthetic_2,679.38591,Online Retail,0
+synthetic_3,4356.02871,Coffee Shop,0
+synthetic_4,3517.83561,Coffee Shop,0
+synthetic_5,1523.39552,Coffee Shop,0
+synthetic_6,1043.76689,Pharmacy,0
+synthetic_7,4666.89534,Electronics,0
+synthetic_8,2937.4212,Entertainment,1
+synthetic_9,620.01277,Coffee Shop,0
+synthetic_10,3528.89386,Entertainment,0
+synthetic_11,4345.25309,Travel,0
+synthetic_12,4420.81028,Coffee Shop,0
+synthetic_13,490.01463,Entertainment,0
+synthetic_14,3775.487,Electronics,0
+synthetic_15,3962.9239,Restaurant,0
+synthetic_16,625.54233,Online Retail,0
+synthetic_17,2393.0822,Online Retail,0
+synthetic_18,3597.98799,Coffee Shop,0
+synthetic_19,1135.50864,Grocery,0
+synthetic_20,3903.33481,Entertainment,1
+synthetic_21,940.56018,Gas Station,0
+synthetic_22,3003.5453,Electronics,0
+synthetic_23,4221.30579,Restaurant,0
+synthetic_24,2586.727,Coffee Shop,0
+synthetic_25,4010.2675,Coffee Shop,0
+synthetic_26,4074.39389,Coffee Shop,1
+synthetic_27,2036.95529,Pharmacy,0
+synthetic_28,1781.26976,Travel,0
+synthetic_29,1624.98612,Entertainment,0
+synthetic_30,747.51064,Coffee Shop,0
+synthetic_31,1849.05065,Grocery,0
+synthetic_32,520.6957,Gas Station,0
+synthetic_33,3861.33123,Grocery,0
+synthetic_34,2690.05417,Online Retail,0
+synthetic_35,2189.49789,Electronics,0
+synthetic_36,2758.14216,Home Improvement,0
+synthetic_37,823.4238,Gas Station,0
+synthetic_38,1318.10912,Gas Station,0
+synthetic_39,3467.84043,Electronics,0
+synthetic_40,4724.60509,Electronics,0
+synthetic_41,3250.74776,Electronics,0
+synthetic_42,605.26227,Gas Station,0
+synthetic_43,2881.73431,Entertainment,0
+synthetic_44,1924.59498,Restaurant,0
+synthetic_45,4081.69209,Coffee Shop,0
+synthetic_46,2265.64405,Restaurant,0
+synthetic_47,3771.52705,Travel,0
+synthetic_48,1565.93582,Online Retail,0
+synthetic_49,4095.83245,Coffee Shop,0
+synthetic_50,2464.20777,Gas Station,0
+synthetic_51,2987.89866,Entertainment,0
+synthetic_52,4270.4767,Coffee Shop,1
+synthetic_53,2196.87387,Pharmacy,0
+synthetic_54,948.95633,Electronics,0
+synthetic_55,2780.87286,Coffee Shop,0
+synthetic_56,4957.00257,Electronics,0
+synthetic_57,536.99949,Coffee Shop,0
+synthetic_58,3142.83447,Coffee Shop,0
+synthetic_59,615.62584,Gas Station,0
+synthetic_60,4987.15253,Electronics,0
+synthetic_61,2352.80746,Travel,0
+synthetic_62,3260.74681,Grocery,1
+synthetic_63,4204.40342,Coffee Shop,0
+synthetic_64,3787.95629,Pharmacy,0
+synthetic_65,2111.11341,Restaurant,0
+synthetic_66,2605.98631,Restaurant,0
+synthetic_67,3374.27766,Coffee Shop,0
+synthetic_68,4547.2411,Coffee Shop,0
+synthetic_69,3287.1676,Travel,0
+synthetic_70,2569.25329,Coffee Shop,0
+synthetic_71,2220.46923,Online Retail,0
+synthetic_72,2347.49087,Pharmacy,0
+synthetic_73,4912.76248,Electronics,0
+synthetic_74,1415.98625,Coffee Shop,0
+synthetic_75,864.75521,Grocery,0
+synthetic_76,4386.90355,Coffee Shop,0
+synthetic_77,1538.42658,Pharmacy,0
+synthetic_78,3662.72271,Gas Station,0
+synthetic_79,1667.80431,Entertainment,0
+synthetic_80,2936.59546,Entertainment,1
+synthetic_81,1471.70891,Home Improvement,0
+synthetic_82,1670.46479,Travel,0
+synthetic_83,3874.97412,Home Improvement,0
+synthetic_84,4045.15259,Coffee Shop,0
+synthetic_85,1507.74086,Restaurant,0
+synthetic_86,469.19932,Electronics,0
+synthetic_87,2572.35415,Gas Station,0
+synthetic_88,3177.90868,Coffee Shop,0
+synthetic_89,1308.92226,Electronics,0
+synthetic_90,3049.39858,Electronics,0
+synthetic_91,3145.85674,Electronics,0
+synthetic_92,4033.95784,Online Retail,0
+synthetic_93,3563.54731,Coffee Shop,1
+synthetic_94,2739.31172,Coffee Shop,0
+synthetic_95,4456.24546,Coffee Shop,0
+synthetic_96,2671.39942,Gas Station,0
+synthetic_97,1050.11503,Grocery,0
+synthetic_98,4861.66401,Grocery,0
+synthetic_99,4629.77434,Pharmacy,0
+synthetic_100,449.04247,Coffee Shop,0
+synthetic_101,3697.71116,Restaurant,0
+synthetic_102,508.67323,Grocery,0
+synthetic_103,4606.06346,Entertainment,0
+synthetic_104,4051.47139,Home Improvement,0
+synthetic_105,4998.77002,Coffee Shop,0
+synthetic_106,3921.63425,Restaurant,0
+synthetic_107,4314.39171,Coffee Shop,0
+synthetic_108,1474.94087,Electronics,0
+synthetic_109,1230.2306,Home Improvement,0
+synthetic_110,4478.31676,Gas Station,0
+synthetic_111,2769.01235,Coffee Shop,0
+synthetic_112,692.43522,Coffee Shop,0
+synthetic_113,2652.8605,Pharmacy,0
+synthetic_114,407.26398,Electronics,0
+synthetic_115,795.80965,Restaurant,0
+synthetic_116,4381.84091,Travel,0
+synthetic_117,4080.84056,Entertainment,0
+synthetic_118,1758.61899,Entertainment,1
+synthetic_119,2668.43458,Grocery,0
+synthetic_120,2534.24769,Coffee Shop,0
+synthetic_121,4114.34921,Coffee Shop,1
+synthetic_122,622.57946,Pharmacy,0
+synthetic_123,3484.3732,Pharmacy,1
+synthetic_124,1541.63275,Coffee Shop,0
+synthetic_125,2254.83416,Grocery,0
+synthetic_126,3266.67557,Gas Station,0
+synthetic_127,2066.7202,Gas Station,0
+synthetic_128,2125.76433,Pharmacy,0
+synthetic_129,4884.09404,Travel,0
+synthetic_130,3174.17071,Entertainment,0
+synthetic_131,3322.09971,Gas Station,0
+synthetic_132,3396.26442,Gas Station,0
+synthetic_133,2061.24788,Coffee Shop,0
+synthetic_134,3514.67491,Coffee Shop,0
+synthetic_135,4008.99908,Home Improvement,0
+synthetic_136,1779.26403,Restaurant,0
+synthetic_137,3198.75755,Entertainment,0
+synthetic_138,3783.05706,Grocery,0
+synthetic_139,2730.62177,Electronics,0
+synthetic_140,2795.45963,Electronics,0
+synthetic_141,3170.30226,Coffee Shop,0
+synthetic_142,3593.25398,Coffee Shop,0
+synthetic_143,1809.35739,Coffee Shop,0
+synthetic_144,2386.60966,Electronics,0
+synthetic_145,4307.33076,Online Retail,0
+synthetic_146,3656.0111,Online Retail,0
+synthetic_147,2796.8583,Pharmacy,0
+synthetic_148,3341.95849,Online Retail,0
+synthetic_149,420.93172,Electronics,0
+synthetic_150,3497.9676,Home Improvement,0
+synthetic_151,1445.14283,Restaurant,0
+synthetic_152,4067.91547,Restaurant,0
+synthetic_153,3290.53553,Coffee Shop,0
+synthetic_154,4140.87146,Entertainment,1
+synthetic_155,4365.27501,Gas Station,0
+synthetic_156,1865.03661,Restaurant,0
+synthetic_157,3995.46023,Coffee Shop,0
+synthetic_158,3709.62889,Travel,0
+synthetic_159,4713.97373,Electronics,0
+synthetic_160,4615.7294,Coffee Shop,0
+synthetic_161,3517.32822,Restaurant,0
+synthetic_162,939.118,Coffee Shop,0
+synthetic_163,4296.0689,Online Retail,0
+synthetic_164,4785.95843,Home Improvement,0
+synthetic_165,677.57154,Coffee Shop,0
+synthetic_166,4478.51848,Coffee Shop,0
+synthetic_167,1109.91722,Entertainment,1
+synthetic_168,3639.15669,Home Improvement,0
+synthetic_169,4165.34691,Pharmacy,0
+synthetic_170,1016.4271,Coffee Shop,0
+synthetic_171,670.06575,Coffee Shop,0
+synthetic_172,4418.19061,Home Improvement,0
+synthetic_173,2800.14246,Grocery,0
+synthetic_174,2477.17406,Travel,0
+synthetic_175,4677.23165,Coffee Shop,0
+synthetic_176,2583.28863,Entertainment,0
+synthetic_177,412.96264,Electronics,0
+synthetic_178,4678.49455,Coffee Shop,0
+synthetic_179,4088.31252,Grocery,0
+synthetic_180,4709.96538,Grocery,0
+synthetic_181,519.253,Gas Station,0
+synthetic_182,539.66954,Travel,0
+synthetic_183,4604.95965,Grocery,0
+synthetic_184,182.03753,Electronics,0
+synthetic_185,1795.83179,Restaurant,0
+synthetic_186,1856.63779,Gas Station,0
+synthetic_187,3439.13627,Coffee Shop,0
+synthetic_188,2848.52977,Grocery,0
+synthetic_189,1498.07905,Coffee Shop,0
+synthetic_190,3791.81047,Entertainment,1
+synthetic_191,2196.88953,Travel,0
+synthetic_192,4733.8916,Online Retail,0
+synthetic_193,3046.03975,Entertainment,0
+synthetic_194,1739.08949,Grocery,0
+synthetic_195,3981.76488,Entertainment,1
+synthetic_196,1002.42081,Online Retail,0
+synthetic_197,1224.20513,Grocery,0
+synthetic_198,3011.69608,Online Retail,0
+synthetic_199,2272.47367,Electronics,0
+synthetic_200,3334.39809,Home Improvement,0
+synthetic_201,4748.16327,Coffee Shop,0
+synthetic_202,4607.2016,Entertainment,0
+synthetic_203,2648.9577,Online Retail,0
+synthetic_204,3814.19107,Entertainment,0
+synthetic_205,2762.25473,Coffee Shop,1
+synthetic_206,3903.73738,Coffee Shop,0
+synthetic_207,819.90877,Coffee Shop,0
+synthetic_208,4903.50168,Home Improvement,0
+synthetic_209,4867.41667,Coffee Shop,0
+synthetic_210,3293.32326,Gas Station,0
+synthetic_211,1459.1844,Coffee Shop,0
+synthetic_212,4998.77002,Coffee Shop,0
+synthetic_213,3065.69914,Coffee Shop,0
+synthetic_214,4364.54271,Electronics,0
+synthetic_215,760.23764,Restaurant,0
+synthetic_216,3071.06344,Electronics,0
+synthetic_217,4783.14464,Coffee Shop,0
+synthetic_218,4160.8216,Entertainment,0
+synthetic_219,1771.20773,Electronics,0
+synthetic_220,2078.80949,Coffee Shop,0
+synthetic_221,4086.63326,Gas Station,0
+synthetic_222,4840.13727,Home Improvement,0
+synthetic_223,4958.27928,Home Improvement,0
+synthetic_224,4402.78546,Restaurant,0
+synthetic_225,3437.59255,Coffee Shop,0
+synthetic_226,4647.53084,Home Improvement,0
+synthetic_227,2753.85954,Entertainment,0
+synthetic_228,3688.27851,Home Improvement,0
+synthetic_229,4791.17515,Electronics,0
+synthetic_230,1826.09666,Electronics,0
+synthetic_231,1641.22659,Gas Station,0
+synthetic_232,4160.42559,Coffee Shop,0
+synthetic_233,2872.50013,Electronics,0
+synthetic_234,3356.65912,Travel,0
+synthetic_235,4998.77002,Pharmacy,0
+synthetic_236,1676.14386,Coffee Shop,0
+synthetic_237,4595.50267,Pharmacy,0
+synthetic_238,4843.96824,Pharmacy,0
+synthetic_239,3382.19532,Entertainment,0
+synthetic_240,4746.16668,Home Improvement,0
+synthetic_241,1104.5383,Grocery,0
+synthetic_242,1820.67025,Gas Station,0
+synthetic_243,4167.40734,Electronics,0
+synthetic_244,2200.04384,Coffee Shop,0
+synthetic_245,4268.16193,Online Retail,0
+synthetic_246,4998.77002,Travel,0
+synthetic_247,2449.00887,Coffee Shop,0
+synthetic_248,2348.89048,Coffee Shop,0
+synthetic_249,4181.11649,Home Improvement,0
+synthetic_250,2554.20947,Coffee Shop,1
+synthetic_251,1568.97608,Gas Station,0
+synthetic_252,2835.74161,Coffee Shop,0
+synthetic_253,3216.06102,Coffee Shop,0
+synthetic_254,3572.16138,Gas Station,0
+synthetic_255,1567.50905,Gas Station,0
+synthetic_256,4532.21125,Coffee Shop,0
+synthetic_257,4182.58766,Gas Station,0
+synthetic_258,3763.64666,Coffee Shop,0
+synthetic_259,2366.16588,Coffee Shop,0
+synthetic_260,2357.38028,Coffee Shop,1
+synthetic_261,4104.35628,Pharmacy,0
+synthetic_262,714.38609,Gas Station,0
+synthetic_263,2929.29212,Coffee Shop,1
+synthetic_264,4097.58004,Coffee Shop,0
+synthetic_265,3371.74134,Entertainment,1
+synthetic_266,1825.45581,Coffee Shop,0
+synthetic_267,3578.68311,Grocery,0
+synthetic_268,4722.19387,Electronics,0
+synthetic_269,3963.19843,Grocery,0
+synthetic_270,3810.27279,Coffee Shop,0
+synthetic_271,3175.61332,Coffee Shop,0
+synthetic_272,1450.84969,Coffee Shop,0
+synthetic_273,4204.27193,Coffee Shop,1
+synthetic_274,1314.21042,Electronics,0
+synthetic_275,3570.62542,Online Retail,1
+synthetic_276,520.93847,Pharmacy,0
+synthetic_277,3626.81129,Coffee Shop,0
+synthetic_278,3775.52057,Gas Station,0
+synthetic_279,2322.40146,Gas Station,0
+synthetic_280,3543.47561,Coffee Shop,0
+synthetic_281,4998.77002,Coffee Shop,0
+synthetic_282,2735.21313,Pharmacy,0
+synthetic_283,2603.74485,Grocery,0
+synthetic_284,1245.60599,Online Retail,0
+synthetic_285,4241.75822,Entertainment,1
+synthetic_286,4112.70843,Coffee Shop,0
+synthetic_287,4914.3584,Home Improvement,0
+synthetic_288,2060.19058,Grocery,0
+synthetic_289,3951.6189,Home Improvement,0
+synthetic_290,899.34438,Pharmacy,0
+synthetic_291,312.72725,Travel,0
+synthetic_292,391.78359,Grocery,0
+synthetic_293,2930.92488,Grocery,0
+synthetic_294,1331.45289,Online Retail,0
+synthetic_295,2644.39965,Coffee Shop,0
+synthetic_296,3822.00935,Electronics,0
+synthetic_297,874.48707,Electronics,0
+synthetic_298,3054.91019,Coffee Shop,0
+synthetic_299,3797.52156,Entertainment,0
+synthetic_300,4789.0369,Coffee Shop,0
+synthetic_301,3223.30806,Coffee Shop,1
+synthetic_302,300.95049,Online Retail,0
+synthetic_303,3091.3318,Gas Station,0
+synthetic_304,3591.09727,Electronics,1
+synthetic_305,2122.05078,Electronics,0
+synthetic_306,1927.03265,Home Improvement,0
+synthetic_307,3454.49191,Entertainment,0
+synthetic_308,1917.8957,Gas Station,0
+synthetic_309,2833.90709,Online Retail,0
+synthetic_310,1991.64067,Pharmacy,0
+synthetic_311,2746.7534,Coffee Shop,1
+synthetic_312,4844.43706,Online Retail,0
+synthetic_313,2313.1292,Entertainment,1
+synthetic_314,4548.50555,Online Retail,0
+synthetic_315,4397.4533,Coffee Shop,0
+synthetic_316,1815.09841,Gas Station,0
+synthetic_317,3225.21923,Gas Station,1
+synthetic_318,4304.37877,Home Improvement,0
+synthetic_319,1555.26494,Grocery,0
+synthetic_320,3051.72698,Coffee Shop,0
+synthetic_321,2345.86394,Coffee Shop,0
+synthetic_322,2015.39198,Pharmacy,0
+synthetic_323,2066.3405,Electronics,0
+synthetic_324,1010.86786,Grocery,0
+synthetic_325,4710.0413,Pharmacy,0
+synthetic_326,1487.04927,Entertainment,0
+synthetic_327,3687.18531,Coffee Shop,0
+synthetic_328,1841.06475,Gas Station,0
+synthetic_329,2924.8508,Online Retail,0
+synthetic_330,4301.84676,Coffee Shop,0
+synthetic_331,2678.71272,Restaurant,1
+synthetic_332,2729.25767,Electronics,0
+synthetic_333,654.49616,Coffee Shop,0
+synthetic_334,3602.75005,Restaurant,0
+synthetic_335,4006.20013,Coffee Shop,0
+synthetic_336,4567.17968,Travel,0
+synthetic_337,937.98555,Pharmacy,0
+synthetic_338,4255.94482,Coffee Shop,0
+synthetic_339,4614.23512,Pharmacy,0
+synthetic_340,3539.93754,Coffee Shop,0
+synthetic_341,3984.1975,Gas Station,0
+synthetic_342,4058.6426,Restaurant,0
+synthetic_343,3493.56282,Grocery,0
+synthetic_344,1967.47318,Coffee Shop,1
+synthetic_345,4576.42822,Pharmacy,0
+synthetic_346,1811.37447,Entertainment,0
+synthetic_347,2289.23268,Electronics,0
+synthetic_348,2741.28225,Pharmacy,0
+synthetic_349,2784.55048,Entertainment,0
+synthetic_350,1899.96881,Coffee Shop,0
+synthetic_351,2706.982,Electronics,0
+synthetic_352,4998.77002,Gas Station,0
+synthetic_353,4634.80902,Travel,0
+synthetic_354,3727.54354,Coffee Shop,0
+synthetic_355,2583.3355,Entertainment,0
+synthetic_356,1096.49277,Coffee Shop,1
+synthetic_357,4521.30069,Gas Station,0
+synthetic_358,4697.67701,Pharmacy,0
+synthetic_359,4798.54065,Coffee Shop,0
+synthetic_360,486.32877,Gas Station,0
+synthetic_361,1721.80017,Restaurant,0
+synthetic_362,2579.21119,Online Retail,0
+synthetic_363,4934.21329,Home Improvement,0
+synthetic_364,3259.88976,Coffee Shop,0
+synthetic_365,3051.6322,Travel,0
+synthetic_366,4133.99773,Restaurant,0
+synthetic_367,2526.22902,Home Improvement,0
+synthetic_368,1284.33008,Coffee Shop,0
+synthetic_369,940.06703,Pharmacy,1
+synthetic_370,610.40256,Coffee Shop,0
+synthetic_371,2720.66814,Home Improvement,1
+synthetic_372,2419.09111,Entertainment,0
+synthetic_373,3234.96869,Electronics,0
+synthetic_374,3189.88667,Online Retail,0
+synthetic_375,3157.28089,Entertainment,1
+synthetic_376,1115.93061,Restaurant,0
+synthetic_377,1725.02523,Coffee Shop,0
+synthetic_378,406.53599,Electronics,0
+synthetic_379,3677.21887,Coffee Shop,0
+synthetic_380,4050.75496,Coffee Shop,1
+synthetic_381,1729.66719,Coffee Shop,0
+synthetic_382,4522.24403,Pharmacy,0
+synthetic_383,4326.15277,Coffee Shop,0
+synthetic_384,3318.24709,Restaurant,0
+synthetic_385,2811.90242,Gas Station,0
+synthetic_386,1972.16371,Coffee Shop,0
+synthetic_387,558.74761,Online Retail,0
+synthetic_388,3134.66385,Entertainment,0
+synthetic_389,4173.53789,Electronics,0
+synthetic_390,4927.28003,Pharmacy,0
+synthetic_391,4574.87044,Electronics,0
+synthetic_392,3049.72651,Coffee Shop,0
+synthetic_393,3767.90194,Restaurant,0
+synthetic_394,4273.18592,Entertainment,0
+synthetic_395,3908.99784,Coffee Shop,0
+synthetic_396,4116.48401,Grocery,0
+synthetic_397,3692.63084,Home Improvement,0
+synthetic_398,2724.02653,Online Retail,0
+synthetic_399,4364.68679,Home Improvement,0
+synthetic_400,4041.27313,Restaurant,0
+synthetic_401,2951.59663,Online Retail,0
+synthetic_402,4534.21525,Grocery,0
+synthetic_403,2432.76647,Pharmacy,0
+synthetic_404,3934.36745,Grocery,0
+synthetic_405,514.5893,Online Retail,0
+synthetic_406,3547.09443,Gas Station,0
+synthetic_407,4339.0423,Entertainment,0
+synthetic_408,4559.5343,Pharmacy,0
+synthetic_409,398.58865,Gas Station,0
+synthetic_410,671.05292,Pharmacy,0
+synthetic_411,3957.26545,Coffee Shop,0
+synthetic_412,4133.53857,Pharmacy,0
+synthetic_413,3689.73889,Travel,0
+synthetic_414,4998.77002,Travel,0
+synthetic_415,4039.57489,Coffee Shop,0
+synthetic_416,3116.49396,Coffee Shop,0
+synthetic_417,2774.33563,Electronics,0
+synthetic_418,4697.3483,Travel,0
+synthetic_419,4955.89497,Coffee Shop,0
+synthetic_420,1993.91472,Electronics,0
+synthetic_421,3552.54237,Entertainment,0
+synthetic_422,3524.02233,Entertainment,0
+synthetic_423,4367.66467,Restaurant,1
+synthetic_424,3902.52659,Travel,0
+synthetic_425,2978.31511,Electronics,0
+synthetic_426,2230.72428,Entertainment,1
+synthetic_427,3114.00341,Entertainment,0
+synthetic_428,2425.12391,Grocery,0
+synthetic_429,713.75438,Online Retail,0
+synthetic_430,2135.73793,Restaurant,0
+synthetic_431,1543.85796,Grocery,0
+synthetic_432,3505.49254,Home Improvement,0
+synthetic_433,441.12705,Gas Station,0
+synthetic_434,1601.21321,Travel,0
+synthetic_435,690.94905,Coffee Shop,0
+synthetic_436,4571.51536,Coffee Shop,0
+synthetic_437,3395.27044,Gas Station,0
+synthetic_438,3697.66949,Coffee Shop,0
+synthetic_439,1563.46024,Coffee Shop,0
+synthetic_440,1154.32762,Entertainment,1
+synthetic_441,4400.03293,Online Retail,0
+synthetic_442,2128.78879,Online Retail,0
+synthetic_443,4143.22747,Travel,0
+synthetic_444,4876.23315,Travel,0
+synthetic_445,2344.06897,Pharmacy,0
+synthetic_446,3501.67693,Coffee Shop,0
+synthetic_447,2613.79841,Home Improvement,0
+synthetic_448,2015.25622,Coffee Shop,0
+synthetic_449,4890.6646,Coffee Shop,0
+synthetic_450,4472.74545,Pharmacy,0
+synthetic_451,1753.61118,Coffee Shop,0
+synthetic_452,4685.92527,Pharmacy,0
+synthetic_453,2486.4058,Home Improvement,0
+synthetic_454,2583.29257,Online Retail,0
+synthetic_455,2257.94745,Electronics,0
+synthetic_456,2395.77535,Coffee Shop,0
+synthetic_457,2998.33474,Coffee Shop,0
+synthetic_458,2176.80844,Restaurant,0
+synthetic_459,2215.65741,Pharmacy,0
+synthetic_460,3397.21362,Coffee Shop,0
+synthetic_461,630.98596,Gas Station,0
+synthetic_462,4918.65474,Coffee Shop,0
+synthetic_463,1162.12252,Grocery,0
+synthetic_464,3906.98901,Electronics,0
+synthetic_465,4502.77841,Coffee Shop,0
+synthetic_466,1273.97945,Electronics,0
+synthetic_467,4676.40133,Travel,0
+synthetic_468,1040.1089,Coffee Shop,0
+synthetic_469,2535.41643,Coffee Shop,0
+synthetic_470,3264.20723,Entertainment,0
+synthetic_471,2811.482,Coffee Shop,0
+synthetic_472,3514.68069,Home Improvement,0
+synthetic_473,1675.6772,Coffee Shop,0
+synthetic_474,2893.55834,Electronics,0
+synthetic_475,4998.77002,Entertainment,0
+synthetic_476,3695.86073,Restaurant,0
+synthetic_477,3887.05621,Grocery,0
+synthetic_478,4654.91084,Gas Station,0
+synthetic_479,2918.49671,Restaurant,0
+synthetic_480,3044.27857,Coffee Shop,0
+synthetic_481,4054.41683,Pharmacy,0
+synthetic_482,4693.95906,Home Improvement,0
+synthetic_483,4633.53767,Electronics,0
+synthetic_484,2078.31306,Gas Station,0
+synthetic_485,965.97,Travel,0
+synthetic_486,3703.50636,Coffee Shop,0
+synthetic_487,1819.27832,Coffee Shop,0
+synthetic_488,1115.3002,Electronics,0
+synthetic_489,3362.60237,Coffee Shop,0
+synthetic_490,2950.25651,Travel,0
+synthetic_491,3430.0702,Electronics,0
+synthetic_492,3973.03468,Electronics,0
+synthetic_493,2683.50618,Coffee Shop,0
+synthetic_494,582.0278,Gas Station,0
+synthetic_495,3932.66576,Online Retail,0
+synthetic_496,2945.49476,Coffee Shop,0
+synthetic_497,4680.03508,Coffee Shop,0
+synthetic_498,3052.39872,Coffee Shop,0
+synthetic_499,2254.32596,Electronics,0
+synthetic_500,4550.85915,Coffee Shop,0
+synthetic_501,4004.71188,Gas Station,0
+synthetic_502,4994.57928,Electronics,0
+synthetic_503,4034.97848,Coffee Shop,1
+synthetic_504,1240.75248,Travel,0
+synthetic_505,4049.47412,Coffee Shop,0
+synthetic_506,1969.57243,Entertainment,0
+synthetic_507,556.02459,Online Retail,0
+synthetic_508,3145.73906,Coffee Shop,0
+synthetic_509,1168.16541,Travel,0
+synthetic_510,2723.02391,Grocery,1
+synthetic_511,2747.87522,Electronics,0
+synthetic_512,3319.56089,Entertainment,0
+synthetic_513,3663.61307,Electronics,0
+synthetic_514,959.66638,Gas Station,0
+synthetic_515,4586.97159,Travel,0
+synthetic_516,1646.62139,Entertainment,1
+synthetic_517,4139.00463,Coffee Shop,0
+synthetic_518,3020.9375,Coffee Shop,0
+synthetic_519,1054.21915,Electronics,0
+synthetic_520,3791.76164,Coffee Shop,0
+synthetic_521,3901.02195,Coffee Shop,0
+synthetic_522,3697.39022,Gas Station,0
+synthetic_523,3606.78661,Coffee Shop,1
+synthetic_524,1384.22381,Coffee Shop,0
+synthetic_525,1077.39003,Coffee Shop,0
+synthetic_526,1478.49567,Online Retail,0
+synthetic_527,665.93127,Gas Station,0
+synthetic_528,3197.68152,Pharmacy,0
+synthetic_529,3818.98902,Gas Station,0
+synthetic_530,2956.38418,Coffee Shop,0
+synthetic_531,2954.55436,Gas Station,0
+synthetic_532,2493.06551,Entertainment,0
+synthetic_533,4958.54915,Coffee Shop,0
+synthetic_534,3088.07763,Coffee Shop,0
+synthetic_535,1177.88804,Electronics,0
+synthetic_536,2438.91488,Grocery,0
+synthetic_537,4658.06109,Home Improvement,0
+synthetic_538,4992.03554,Travel,0
+synthetic_539,3076.79704,Entertainment,0
+synthetic_540,916.83584,Coffee Shop,0
+synthetic_541,3750.79681,Electronics,0
+synthetic_542,3091.08411,Travel,0
+synthetic_543,800.10306,Online Retail,0
+synthetic_544,4148.16017,Coffee Shop,0
+synthetic_545,2057.67751,Coffee Shop,0
+synthetic_546,1031.04853,Entertainment,0
+synthetic_547,3914.85594,Travel,0
+synthetic_548,1122.06384,Grocery,0
+synthetic_549,491.24871,Online Retail,0
+synthetic_550,1078.59314,Gas Station,0
+synthetic_551,3004.14862,Electronics,0
+synthetic_552,2297.40901,Grocery,0
+synthetic_553,4888.72927,Home Improvement,0
+synthetic_554,3710.62408,Electronics,0
+synthetic_555,3653.20508,Electronics,0
+synthetic_556,891.49557,Coffee Shop,0
+synthetic_557,3290.88504,Home Improvement,0
+synthetic_558,718.58701,Coffee Shop,0
+synthetic_559,2602.90534,Electronics,0
+synthetic_560,4036.01586,Entertainment,0
+synthetic_561,4260.9293,Online Retail,0
+synthetic_562,4726.01897,Grocery,0
+synthetic_563,2038.66932,Pharmacy,0
+synthetic_564,4966.94339,Pharmacy,0
+synthetic_565,2984.35046,Grocery,0
+synthetic_566,716.3259,Entertainment,0
+synthetic_567,1763.47366,Coffee Shop,0
+synthetic_568,2715.45465,Home Improvement,0
+synthetic_569,2018.98077,Gas Station,0
+synthetic_570,2586.24989,Travel,0
+synthetic_571,1888.74447,Grocery,1
+synthetic_572,2179.77776,Electronics,0
+synthetic_573,2257.60796,Online Retail,0
+synthetic_574,1825.83102,Coffee Shop,0
+synthetic_575,4775.52428,Electronics,0
+synthetic_576,3972.02077,Gas Station,0
+synthetic_577,3617.25207,Coffee Shop,0
+synthetic_578,3091.0892,Coffee Shop,0
+synthetic_579,1879.55947,Coffee Shop,0
+synthetic_580,3072.4746,Coffee Shop,0
+synthetic_581,2518.64901,Gas Station,0
+synthetic_582,1161.28435,Coffee Shop,1
+synthetic_583,2169.9392,Online Retail,0
+synthetic_584,4516.476,Online Retail,0
+synthetic_585,1908.80703,Coffee Shop,0
+synthetic_586,1126.22067,Coffee Shop,1
+synthetic_587,2853.47693,Coffee Shop,0
+synthetic_588,4998.77002,Online Retail,0
+synthetic_589,1603.14086,Coffee Shop,0
+synthetic_590,4998.77002,Electronics,0
+synthetic_591,4354.05749,Entertainment,0
+synthetic_592,4320.42011,Coffee Shop,0
+synthetic_593,1596.65554,Restaurant,0
+synthetic_594,2700.66865,Travel,0
+synthetic_595,872.93015,Coffee Shop,0
+synthetic_596,4216.13203,Entertainment,0
+synthetic_597,465.85322,Entertainment,1
+synthetic_598,4557.78706,Gas Station,0
+synthetic_599,3778.40855,Online Retail,0
+synthetic_600,2157.77571,Grocery,0
+synthetic_601,4806.30819,Pharmacy,0
+synthetic_602,4842.28121,Grocery,0
+synthetic_603,3066.97343,Entertainment,0
+synthetic_604,3901.75675,Electronics,0
+synthetic_605,1287.2096,Travel,0
+synthetic_606,2624.32356,Home Improvement,0
+synthetic_607,3487.8205,Electronics,0
+synthetic_608,1981.97434,Online Retail,0
+synthetic_609,4726.1389,Gas Station,0
+synthetic_610,2101.94905,Coffee Shop,0
+synthetic_611,4108.60224,Coffee Shop,0
+synthetic_612,475.98971,Coffee Shop,1
+synthetic_613,3762.21311,Coffee Shop,0
+synthetic_614,4141.98665,Gas Station,0
+synthetic_615,3545.80953,Online Retail,0
+synthetic_616,4949.80342,Travel,0
+synthetic_617,1034.47055,Coffee Shop,0
+synthetic_618,2697.36344,Electronics,0
+synthetic_619,3953.46623,Home Improvement,0
+synthetic_620,4132.79574,Coffee Shop,0
+synthetic_621,3826.38402,Restaurant,1
+synthetic_622,1263.19477,Pharmacy,0
+synthetic_623,1440.34713,Electronics,0
+synthetic_624,1282.64046,Online Retail,0
+synthetic_625,1094.6954,Electronics,0
+synthetic_626,3751.07393,Coffee Shop,0
+synthetic_627,870.2268,Coffee Shop,0
+synthetic_628,3804.45835,Entertainment,0
+synthetic_629,1599.9491,Home Improvement,0
+synthetic_630,3039.10433,Coffee Shop,0
+synthetic_631,561.84438,Gas Station,0
+synthetic_632,2101.19686,Restaurant,0
+synthetic_633,3173.50816,Coffee Shop,1
+synthetic_634,4656.45741,Entertainment,0
+synthetic_635,4006.40443,Travel,0
+synthetic_636,1974.32521,Coffee Shop,0
+synthetic_637,4920.03773,Grocery,0
+synthetic_638,2797.77405,Entertainment,0
+synthetic_639,2472.82229,Pharmacy,0
+synthetic_640,3060.48082,Restaurant,0
+synthetic_641,3343.62774,Coffee Shop,0
+synthetic_642,881.58339,Coffee Shop,0
+synthetic_643,2889.87922,Coffee Shop,0
+synthetic_644,1882.85601,Entertainment,1
+synthetic_645,2660.73479,Restaurant,1
+synthetic_646,4776.60031,Coffee Shop,0
+synthetic_647,1974.91033,Grocery,0
+synthetic_648,1808.09635,Restaurant,0
+synthetic_649,4925.04239,Home Improvement,0
+synthetic_650,1558.24058,Grocery,0
+synthetic_651,1326.42942,Entertainment,0
+synthetic_652,4585.10908,Electronics,0
+synthetic_653,3805.99319,Online Retail,0
+synthetic_654,2841.36146,Coffee Shop,0
+synthetic_655,3154.52426,Coffee Shop,0
+synthetic_656,3348.6972,Gas Station,0
+synthetic_657,2637.85212,Home Improvement,0
+synthetic_658,4139.45016,Electronics,0
+synthetic_659,653.26622,Coffee Shop,0
+synthetic_660,4224.27987,Travel,0
+synthetic_661,4369.44591,Electronics,0
+synthetic_662,2305.06389,Coffee Shop,0
+synthetic_663,4392.95249,Pharmacy,0
+synthetic_664,2380.8928,Gas Station,0
+synthetic_665,4623.46641,Home Improvement,0
+synthetic_666,4711.31576,Coffee Shop,0
+synthetic_667,4998.77002,Gas Station,0
+synthetic_668,3598.84324,Pharmacy,0
+synthetic_669,3120.3792,Home Improvement,0
+synthetic_670,3305.28957,Electronics,0
+synthetic_671,552.62292,Electronics,0
+synthetic_672,4593.47451,Home Improvement,0
+synthetic_673,4805.05202,Electronics,0
+synthetic_674,907.03755,Home Improvement,0
+synthetic_675,572.58721,Grocery,0
+synthetic_676,4518.50486,Coffee Shop,0
+synthetic_677,3025.62955,Restaurant,0
+synthetic_678,1964.55733,Electronics,0
+synthetic_679,685.09095,Coffee Shop,0
+synthetic_680,4998.77002,Gas Station,0
+synthetic_681,747.35845,Grocery,0
+synthetic_682,1121.96902,Grocery,0
+synthetic_683,4222.59751,Restaurant,1
+synthetic_684,2716.89072,Restaurant,0
+synthetic_685,3774.20487,Gas Station,0
+synthetic_686,1901.34188,Gas Station,0
+synthetic_687,1288.55127,Coffee Shop,0
+synthetic_688,388.35346,Coffee Shop,0
+synthetic_689,1204.17312,Online Retail,0
+synthetic_690,4668.38791,Pharmacy,0
+synthetic_691,3441.64948,Travel,0
+synthetic_692,2025.25786,Coffee Shop,0
+synthetic_693,3898.00032,Online Retail,1
+synthetic_694,4959.5546,Pharmacy,0
+synthetic_695,3716.7215,Electronics,0
+synthetic_696,3893.15105,Coffee Shop,0
+synthetic_697,3119.86832,Pharmacy,0
+synthetic_698,661.3956,Entertainment,0
+synthetic_699,4672.83644,Entertainment,0
+synthetic_700,2814.26015,Entertainment,0
+synthetic_701,2601.32652,Online Retail,0
+synthetic_702,4998.77002,Home Improvement,0
+synthetic_703,2933.52738,Online Retail,0
+synthetic_704,2126.99901,Entertainment,0
+synthetic_705,1997.78296,Coffee Shop,0
+synthetic_706,4277.9635,Pharmacy,0
+synthetic_707,592.10062,Restaurant,0
+synthetic_708,4358.8827,Gas Station,0
+synthetic_709,2597.92719,Pharmacy,0
+synthetic_710,1167.17463,Coffee Shop,0
+synthetic_711,2455.93736,Coffee Shop,1
+synthetic_712,916.02917,Coffee Shop,0
+synthetic_713,1160.31229,Entertainment,0
+synthetic_714,4022.46976,Coffee Shop,0
+synthetic_715,2866.55295,Gas Station,0
+synthetic_716,2053.76341,Coffee Shop,0
+synthetic_717,648.87135,Gas Station,0
+synthetic_718,4309.74596,Electronics,0
+synthetic_719,3503.77946,Entertainment,0
+synthetic_720,4435.32507,Home Improvement,0
+synthetic_721,742.37605,Entertainment,0
+synthetic_722,2747.75756,Coffee Shop,0
+synthetic_723,377.28916,Restaurant,0
+synthetic_724,1644.46398,Coffee Shop,0
+synthetic_725,4630.73873,Pharmacy,0
+synthetic_726,4942.51211,Home Improvement,0
+synthetic_727,1485.61451,Electronics,0
+synthetic_728,4832.24515,Restaurant,0
+synthetic_729,3866.44201,Grocery,0
+synthetic_730,2065.53119,Travel,0
+synthetic_731,3017.94953,Coffee Shop,0
+synthetic_732,2982.74177,Coffee Shop,1
+synthetic_733,4100.63574,Gas Station,0
+synthetic_734,3419.59508,Entertainment,0
+synthetic_735,2914.6575,Online Retail,0
+synthetic_736,4117.08863,Coffee Shop,0
+synthetic_737,2949.93044,Pharmacy,0
+synthetic_738,4998.77002,Home Improvement,0
+synthetic_739,4691.13975,Electronics,0
+synthetic_740,1967.29563,Travel,0
+synthetic_741,2364.02858,Coffee Shop,0
+synthetic_742,4971.68905,Coffee Shop,0
+synthetic_743,843.91748,Online Retail,1
+synthetic_744,3795.52463,Entertainment,0
+synthetic_745,2864.29983,Electronics,0
+synthetic_746,866.07989,Coffee Shop,0
+synthetic_747,2477.81307,Pharmacy,0
+synthetic_748,1950.79905,Home Improvement,0
+synthetic_749,957.56074,Coffee Shop,0
+synthetic_750,3431.5424,Coffee Shop,0
+synthetic_751,4286.98411,Electronics,0
+synthetic_752,3177.46281,Gas Station,0
+synthetic_753,4277.82356,Coffee Shop,0
+synthetic_754,2611.57601,Gas Station,0
+synthetic_755,1173.77288,Coffee Shop,1
+synthetic_756,1270.75258,Pharmacy,0
+synthetic_757,871.914,Home Improvement,0
+synthetic_758,1757.62337,Travel,0
+synthetic_759,3341.35818,Coffee Shop,0
+synthetic_760,1458.74345,Restaurant,0
+synthetic_761,369.97405,Online Retail,0
+synthetic_762,4056.03381,Grocery,0
+synthetic_763,1331.94837,Electronics,0
+synthetic_764,3283.77094,Gas Station,0
+synthetic_765,2151.74229,Restaurant,0
+synthetic_766,1649.65724,Gas Station,0
+synthetic_767,4044.47809,Restaurant,0
+synthetic_768,2298.36629,Grocery,0
+synthetic_769,2130.1516,Electronics,0
+synthetic_770,4836.6709,Electronics,0
+synthetic_771,682.85469,Travel,0
+synthetic_772,1926.88042,Gas Station,0
+synthetic_773,3062.81677,Restaurant,0
+synthetic_774,3666.3109,Coffee Shop,0
+synthetic_775,4076.56527,Restaurant,0
+synthetic_776,1004.51437,Electronics,0
+synthetic_777,3399.84778,Entertainment,0
+synthetic_778,2003.03256,Electronics,0
+synthetic_779,1543.97133,Coffee Shop,0
+synthetic_780,828.25988,Coffee Shop,0
+synthetic_781,3276.17034,Entertainment,0
+synthetic_782,1582.96856,Restaurant,0
+synthetic_783,2850.89372,Home Improvement,0
+synthetic_784,1948.77421,Travel,0
+synthetic_785,3145.27775,Home Improvement,0
+synthetic_786,689.32948,Pharmacy,0
+synthetic_787,4877.42461,Home Improvement,0
+synthetic_788,1579.05649,Gas Station,0
+synthetic_789,4643.92143,Travel,0
+synthetic_790,2499.00861,Grocery,0
+synthetic_791,3264.00949,Entertainment,0
+synthetic_792,4484.17072,Entertainment,0
+synthetic_793,2611.23739,Pharmacy,0
+synthetic_794,4030.28993,Restaurant,0
+synthetic_795,1954.79985,Restaurant,0
+synthetic_796,999.71125,Entertainment,0
+synthetic_797,638.83511,Gas Station,0
+synthetic_798,4806.30301,Pharmacy,0
+synthetic_799,552.09457,Gas Station,0
+synthetic_800,1251.06541,Coffee Shop,0
+synthetic_801,2797.17414,Pharmacy,0
+synthetic_802,3739.57274,Online Retail,0
+synthetic_803,2427.43304,Grocery,0
+synthetic_804,602.09131,Home Improvement,0
+synthetic_805,3143.06332,Home Improvement,0
+synthetic_806,1908.14374,Travel,0
+synthetic_807,4378.79125,Coffee Shop,1
+synthetic_808,4764.59441,Grocery,0
+synthetic_809,780.44004,Online Retail,0
+synthetic_810,3549.26028,Entertainment,0
+synthetic_811,4490.52507,Home Improvement,0
+synthetic_812,4998.77002,Pharmacy,0
+synthetic_813,669.71703,Electronics,0
+synthetic_814,448.24235,Electronics,0
+synthetic_815,2716.91057,Coffee Shop,1
+synthetic_816,4998.77002,Home Improvement,0
+synthetic_817,4298.02476,Gas Station,0
+synthetic_818,1474.28544,Coffee Shop,0
+synthetic_819,3687.38305,Electronics,0
+synthetic_820,3508.33514,Coffee Shop,0
+synthetic_821,3513.81043,Travel,0
+synthetic_822,3492.39284,Gas Station,0
+synthetic_823,3272.73805,Entertainment,0
+synthetic_824,267.63475,Entertainment,1
+synthetic_825,4950.69826,Home Improvement,0
+synthetic_826,1061.82199,Coffee Shop,0
+synthetic_827,3500.86758,Electronics,0
+synthetic_828,2770.28673,Online Retail,0
+synthetic_829,4351.63005,Coffee Shop,0
+synthetic_830,1702.08703,Coffee Shop,1
+synthetic_831,2968.0936,Online Retail,1
+synthetic_832,4362.54699,Coffee Shop,0
+synthetic_833,2405.17364,Electronics,1
+synthetic_834,4834.17271,Travel,0
+synthetic_835,2544.58972,Gas Station,0
+synthetic_836,2422.41684,Entertainment,0
+synthetic_837,2380.34798,Home Improvement,0
+synthetic_838,1650.45796,Coffee Shop,0
+synthetic_839,3149.07442,Electronics,0
+synthetic_840,2751.96937,Pharmacy,0
+synthetic_841,3044.57678,Electronics,1
+synthetic_842,2207.33958,Grocery,0
+synthetic_843,1686.81672,Coffee Shop,0
+synthetic_844,2496.79307,Home Improvement,0
+synthetic_845,2392.43302,Coffee Shop,0
+synthetic_846,916.21984,Online Retail,0
+synthetic_847,2932.94964,Travel,0
+synthetic_848,2766.53595,Entertainment,0
+synthetic_849,1768.67809,Restaurant,0
+synthetic_850,3487.41475,Coffee Shop,0
+synthetic_851,4970.7276,Coffee Shop,0
+synthetic_852,2478.82088,Coffee Shop,0
+synthetic_853,4215.68806,Coffee Shop,0
+synthetic_854,3848.49372,Coffee Shop,1
+synthetic_855,3909.67424,Home Improvement,0
+synthetic_856,3362.23699,Coffee Shop,1
+synthetic_857,3582.80353,Pharmacy,0
+synthetic_858,651.01978,Gas Station,0
+synthetic_859,2832.41595,Coffee Shop,0
+synthetic_860,1903.25926,Gas Station,0
+synthetic_861,1106.25034,Entertainment,0
+synthetic_862,4153.61346,Electronics,0
+synthetic_863,3798.16025,Coffee Shop,0
+synthetic_864,3463.40777,Coffee Shop,1
+synthetic_865,2467.7898,Coffee Shop,1
+synthetic_866,4566.95381,Coffee Shop,0
+synthetic_867,4210.58556,Coffee Shop,0
+synthetic_868,644.29928,Online Retail,0
+synthetic_869,4441.03356,Grocery,0
+synthetic_870,1207.74509,Electronics,0
+synthetic_871,3479.77024,Coffee Shop,0
+synthetic_872,1925.37254,Online Retail,0
+synthetic_873,855.99999,Coffee Shop,0
+synthetic_874,3302.63936,Coffee Shop,0
+synthetic_875,4924.35391,Gas Station,0
+synthetic_876,2451.79251,Coffee Shop,0
+synthetic_877,3300.83207,Electronics,0
+synthetic_878,3790.06823,Entertainment,0
+synthetic_879,3969.93964,Coffee Shop,0
+synthetic_880,1785.85543,Coffee Shop,0
+synthetic_881,4987.65275,Travel,0
+synthetic_882,3566.78936,Coffee Shop,0
+synthetic_883,1490.954,Online Retail,0
+synthetic_884,2198.88162,Grocery,0
+synthetic_885,3681.11765,Coffee Shop,1
+synthetic_886,1723.57321,Coffee Shop,0
+synthetic_887,1455.54997,Grocery,0
+synthetic_888,1969.38988,Coffee Shop,0
+synthetic_889,3601.78946,Online Retail,1
+synthetic_890,4268.16555,Entertainment,0
+synthetic_891,978.28442,Online Retail,1
+synthetic_892,1840.30919,Gas Station,0
+synthetic_893,4065.20125,Online Retail,0
+synthetic_894,3175.70943,Grocery,0
+synthetic_895,4136.70988,Coffee Shop,0
+synthetic_896,1602.68817,Grocery,0
+synthetic_897,2464.23604,Electronics,1
+synthetic_898,3935.85605,Travel,0
+synthetic_899,4299.16291,Gas Station,0
+synthetic_900,3813.29217,Coffee Shop,0
+synthetic_901,2575.29907,Electronics,0
+synthetic_902,3829.22982,Coffee Shop,0
+synthetic_903,3604.07299,Grocery,0
+synthetic_904,3030.13381,Entertainment,0
+synthetic_905,3228.5555,Online Retail,0
+synthetic_906,2542.97901,Grocery,0
+synthetic_907,3688.7714,Coffee Shop,0
+synthetic_908,1774.89747,Electronics,0
+synthetic_909,3986.61218,Coffee Shop,0
+synthetic_910,3205.68235,Online Retail,0
+synthetic_911,3688.80729,Coffee Shop,0
+synthetic_912,3365.97055,Pharmacy,0
+synthetic_913,3281.43426,Online Retail,0
+synthetic_914,2368.16493,Entertainment,0
+synthetic_915,2659.73911,Home Improvement,0
+synthetic_916,612.63657,Gas Station,0
+synthetic_917,3959.69203,Coffee Shop,0
+synthetic_918,3282.97894,Entertainment,0
+synthetic_919,4998.77002,Coffee Shop,0
+synthetic_920,687.00091,Gas Station,0
+synthetic_921,3517.03497,Entertainment,1
+synthetic_922,1398.82238,Gas Station,0
+synthetic_923,2372.0979,Entertainment,0
+synthetic_924,4871.29941,Grocery,0
+synthetic_925,3117.01929,Entertainment,0
+synthetic_926,1540.98033,Coffee Shop,0
+synthetic_927,4660.2882,Grocery,0
+synthetic_928,463.60885,Restaurant,0
+synthetic_929,333.57638,Home Improvement,0
+synthetic_930,2822.40236,Gas Station,0
+synthetic_931,2469.96583,Pharmacy,0
+synthetic_932,1829.32953,Entertainment,0
+synthetic_933,1390.44521,Electronics,0
+synthetic_934,453.06946,Grocery,0
+synthetic_935,1760.71212,Gas Station,0
+synthetic_936,2113.40909,Coffee Shop,0
+synthetic_937,846.88052,Gas Station,0
+synthetic_938,1878.62463,Coffee Shop,0
+synthetic_939,4998.77002,Home Improvement,0
+synthetic_940,3979.29879,Restaurant,0
+synthetic_941,4998.77002,Coffee Shop,0
+synthetic_942,1526.93928,Entertainment,0
+synthetic_943,2005.88706,Restaurant,0
+synthetic_944,4080.33481,Pharmacy,0
+synthetic_945,1135.81311,Electronics,0
+synthetic_946,2624.75255,Entertainment,0
+synthetic_947,3777.08034,Electronics,0
+synthetic_948,2275.0796,Pharmacy,0
+synthetic_949,2868.55187,Entertainment,1
+synthetic_950,1429.88452,Grocery,0
+synthetic_951,4685.84158,Home Improvement,0
+synthetic_952,2028.09477,Restaurant,0
+synthetic_953,3835.76854,Coffee Shop,0
+synthetic_954,873.71025,Online Retail,0
+synthetic_955,4137.88133,Home Improvement,0
+synthetic_956,2552.21653,Coffee Shop,0
+synthetic_957,1660.57832,Coffee Shop,1
+synthetic_958,3695.46179,Electronics,0
+synthetic_959,4435.88327,Gas Station,0
+synthetic_960,4967.34544,Entertainment,0
+synthetic_961,2193.43983,Entertainment,0
+synthetic_962,3555.23502,Online Retail,0
+synthetic_963,3638.484,Gas Station,0
+synthetic_964,3355.00703,Pharmacy,0
+synthetic_965,1567.45824,Coffee Shop,1
+synthetic_966,3527.96718,Entertainment,0
+synthetic_967,4521.72103,Restaurant,0
+synthetic_968,2921.96774,Electronics,0
+synthetic_969,4330.82924,Coffee Shop,0
+synthetic_970,4307.71693,Gas Station,0
+synthetic_971,3454.73382,Home Improvement,0
+synthetic_972,953.13999,Restaurant,0
+synthetic_973,2569.14968,Coffee Shop,0
+synthetic_974,1841.94683,Electronics,0
+synthetic_975,1935.40882,Electronics,0
+synthetic_976,281.64673,Online Retail,0
+synthetic_977,2920.6054,Coffee Shop,0
+synthetic_978,4789.4524,Pharmacy,0
+synthetic_979,4998.77002,Gas Station,0
+synthetic_980,2663.25002,Travel,0
+synthetic_981,3721.80545,Grocery,0
+synthetic_982,2081.10484,Travel,0
+synthetic_983,4517.55186,Coffee Shop,0
+synthetic_984,4180.71807,Coffee Shop,1
+synthetic_985,1066.78429,Home Improvement,0
+synthetic_986,2051.2399,Home Improvement,0
+synthetic_987,382.21048,Entertainment,0
+synthetic_988,2865.22552,Electronics,1
+synthetic_989,2820.79087,Online Retail,0
+synthetic_990,1459.20537,Coffee Shop,0
+synthetic_991,2347.22853,Electronics,0
+synthetic_992,4762.26722,Pharmacy,0
+synthetic_993,1711.51235,Electronics,0
+synthetic_994,4434.90422,Gas Station,0
+synthetic_995,1439.86977,Grocery,0
+synthetic_996,530.26087,Electronics,0
+synthetic_997,4352.94885,Travel,0
+synthetic_998,4767.93982,Pharmacy,0
+synthetic_999,283.16362,Electronics,0
+synthetic_1000,3496.2144,Home Improvement,0
+synthetic_1001,691.82698,Gas Station,0
+synthetic_1002,4279.48177,Coffee Shop,0
+synthetic_1003,3248.72823,Coffee Shop,0
+synthetic_1004,4105.20955,Coffee Shop,0
+synthetic_1005,3695.22868,Travel,0
+synthetic_1006,1229.95849,Pharmacy,0
+synthetic_1007,4649.30087,Electronics,0
+synthetic_1008,3033.54958,Electronics,0
+synthetic_1009,4459.19452,Electronics,0
+synthetic_1010,1104.22814,Coffee Shop,0
+synthetic_1011,3402.77398,Electronics,0
+synthetic_1012,1439.93732,Pharmacy,0
+synthetic_1013,1827.94744,Travel,0
+synthetic_1014,3330.95234,Coffee Shop,1
+synthetic_1015,3617.72132,Entertainment,0
+synthetic_1016,4046.4443,Gas Station,0
+synthetic_1017,3106.81327,Coffee Shop,0
+synthetic_1018,1618.97531,Travel,0
+synthetic_1019,2985.9532,Grocery,0
+synthetic_1020,3261.46626,Coffee Shop,1
+synthetic_1021,992.75021,Coffee Shop,0
+synthetic_1022,846.24846,Gas Station,0
+synthetic_1023,3551.39128,Pharmacy,0
+synthetic_1024,2542.32066,Grocery,0
+synthetic_1025,4052.29394,Coffee Shop,0
+synthetic_1026,538.61871,Entertainment,0
+synthetic_1027,904.80095,Grocery,1
+synthetic_1028,4664.49344,Home Improvement,0
+synthetic_1029,1759.42096,Home Improvement,0
+synthetic_1030,4178.51011,Pharmacy,0
+synthetic_1031,1680.44193,Entertainment,0
+synthetic_1032,659.79416,Travel,0
+synthetic_1033,1476.87456,Grocery,0
+synthetic_1034,2520.0306,Entertainment,0
+synthetic_1035,598.37094,Grocery,0
+synthetic_1036,4693.14151,Coffee Shop,0
+synthetic_1037,1772.03878,Entertainment,0
+synthetic_1038,4056.93107,Entertainment,0
+synthetic_1039,3871.51785,Home Improvement,0
+synthetic_1040,2486.1306,Online Retail,0
+synthetic_1041,4998.77002,Home Improvement,0
+synthetic_1042,2849.37268,Grocery,0
+synthetic_1043,455.69309,Online Retail,1
+synthetic_1044,2342.55105,Coffee Shop,0
+synthetic_1045,2621.34671,Home Improvement,0
+synthetic_1046,3999.57505,Online Retail,0
+synthetic_1047,1608.18494,Electronics,0
+synthetic_1048,537.11631,Coffee Shop,0
+synthetic_1049,3937.28459,Pharmacy,0
+synthetic_1050,2137.89982,Pharmacy,0
+synthetic_1051,1844.39851,Entertainment,0
+synthetic_1052,4754.7195,Restaurant,0
+synthetic_1053,888.36049,Coffee Shop,0
+synthetic_1054,4661.98697,Electronics,0
+synthetic_1055,4142.4748,Grocery,0
+synthetic_1056,3512.94923,Coffee Shop,0
+synthetic_1057,4998.77002,Gas Station,0
+synthetic_1058,4224.70711,Entertainment,0
+synthetic_1059,727.23611,Travel,0
+synthetic_1060,4581.55125,Grocery,0
+synthetic_1061,2141.55796,Gas Station,0
+synthetic_1062,4656.71364,Coffee Shop,0
+synthetic_1063,4965.40683,Home Improvement,0
+synthetic_1064,2594.39382,Gas Station,0
+synthetic_1065,790.89403,Gas Station,0
+synthetic_1066,2853.694,Grocery,0
+synthetic_1067,3358.8669,Coffee Shop,1
+synthetic_1068,1562.8809,Grocery,0
+synthetic_1069,1452.26305,Entertainment,0
+synthetic_1070,3505.51161,Coffee Shop,0
+synthetic_1071,2708.42649,Grocery,0
+synthetic_1072,4616.43704,Coffee Shop,0
+synthetic_1073,2894.53213,Gas Station,0
+synthetic_1074,1288.12067,Coffee Shop,0
+synthetic_1075,1921.07633,Coffee Shop,0
+synthetic_1076,4334.37998,Coffee Shop,0
+synthetic_1077,201.49435,Coffee Shop,1
+synthetic_1078,329.66776,Coffee Shop,0
+synthetic_1079,1646.0788,Electronics,0
+synthetic_1080,3420.93252,Pharmacy,0
+synthetic_1081,2832.72719,Coffee Shop,0
+synthetic_1082,3637.89914,Coffee Shop,0
+synthetic_1083,4810.96119,Home Improvement,0
+synthetic_1084,1146.70416,Electronics,1
+synthetic_1085,2501.92868,Entertainment,0
+synthetic_1086,4105.86507,Electronics,0
+synthetic_1087,4738.08959,Coffee Shop,0
+synthetic_1088,1483.11235,Coffee Shop,0
+synthetic_1089,1572.24971,Home Improvement,0
+synthetic_1090,1206.31327,Pharmacy,0
+synthetic_1091,3834.09031,Entertainment,0
+synthetic_1092,4719.79818,Electronics,0
+synthetic_1093,1445.58698,Travel,0
+synthetic_1094,2439.1108,Online Retail,0
+synthetic_1095,4127.00632,Coffee Shop,0
+synthetic_1096,1476.68579,Home Improvement,0
+synthetic_1097,230.08996,Entertainment,0
+synthetic_1098,1623.65342,Entertainment,0
+synthetic_1099,4800.35968,Grocery,0
+synthetic_1100,4895.28068,Pharmacy,0
+synthetic_1101,1942.5959,Coffee Shop,0
+synthetic_1102,3368.70031,Online Retail,0
+synthetic_1103,4422.59152,Electronics,0
+synthetic_1104,2667.81539,Online Retail,0
+synthetic_1105,3504.18357,Electronics,0
+synthetic_1106,3005.49318,Pharmacy,0
+synthetic_1107,3825.78035,Coffee Shop,0
+synthetic_1108,437.19307,Entertainment,0
+synthetic_1109,3100.53281,Coffee Shop,0
+synthetic_1110,1651.96951,Electronics,0
+synthetic_1111,4099.4888,Home Improvement,0
+synthetic_1112,4853.71373,Travel,0
+synthetic_1113,2056.26643,Electronics,0
+synthetic_1114,1567.95199,Restaurant,0
+synthetic_1115,4487.90782,Coffee Shop,0
+synthetic_1116,1951.70365,Coffee Shop,0
+synthetic_1117,2859.11045,Electronics,0
+synthetic_1118,515.28036,Online Retail,0
+synthetic_1119,1489.59922,Pharmacy,0
+synthetic_1120,4888.56914,Coffee Shop,0
+synthetic_1121,2270.58364,Grocery,0
+synthetic_1122,1772.68511,Coffee Shop,0
+synthetic_1123,531.96809,Gas Station,0
+synthetic_1124,1857.61188,Coffee Shop,1
+synthetic_1125,2456.75599,Pharmacy,0
+synthetic_1126,2908.50662,Gas Station,0
+synthetic_1127,4393.25911,Grocery,1
+synthetic_1128,3198.03137,Online Retail,0
+synthetic_1129,4776.05471,Home Improvement,0
+synthetic_1130,4588.44017,Electronics,0
+synthetic_1131,3906.53589,Entertainment,0
+synthetic_1132,3091.4896,Entertainment,1
+synthetic_1133,4833.39606,Electronics,0
+synthetic_1134,4105.07375,Grocery,0
+synthetic_1135,3042.5723,Coffee Shop,1
+synthetic_1136,3566.46143,Entertainment,0
+synthetic_1137,1627.51485,Restaurant,0
+synthetic_1138,3560.67762,Entertainment,0
+synthetic_1139,1442.71591,Grocery,0
+synthetic_1140,1360.20717,Online Retail,0
+synthetic_1141,4964.53476,Coffee Shop,0
+synthetic_1142,493.71809,Pharmacy,0
+synthetic_1143,508.70567,Online Retail,0
+synthetic_1144,1773.47138,Restaurant,0
+synthetic_1145,4933.49168,Home Improvement,0
+synthetic_1146,53.35596,Electronics,1
+synthetic_1147,3628.35942,Coffee Shop,0
+synthetic_1148,2018.3919,Gas Station,0
+synthetic_1149,2588.72034,Home Improvement,0
+synthetic_1150,2458.56762,Entertainment,0
+synthetic_1151,3978.44,Restaurant,0
+synthetic_1152,1423.07938,Electronics,0
+synthetic_1153,1694.62162,Coffee Shop,0
+synthetic_1154,323.32652,Online Retail,0
+synthetic_1155,1912.04559,Coffee Shop,1
+synthetic_1156,2058.30697,Online Retail,0
+synthetic_1157,3975.29596,Coffee Shop,1
+synthetic_1158,4623.77665,Electronics,0
+synthetic_1159,4022.75309,Electronics,0
+synthetic_1160,4765.77448,Coffee Shop,0
+synthetic_1161,3801.13546,Grocery,0
+synthetic_1162,4353.08931,Travel,0
+synthetic_1163,2231.38925,Coffee Shop,0
+synthetic_1164,1506.37339,Electronics,0
+synthetic_1165,2214.15148,Online Retail,0
+synthetic_1166,3879.08713,Gas Station,0
+synthetic_1167,760.15964,Pharmacy,0
+synthetic_1168,725.79652,Coffee Shop,0
+synthetic_1169,3203.15819,Coffee Shop,0
+synthetic_1170,4137.33003,Pharmacy,0
+synthetic_1171,4747.36557,Pharmacy,0
+synthetic_1172,1750.19524,Gas Station,0
+synthetic_1173,3096.43585,Gas Station,0
+synthetic_1174,797.93565,Coffee Shop,0
+synthetic_1175,4060.75704,Online Retail,1
+synthetic_1176,814.98055,Pharmacy,0
+synthetic_1177,2189.03571,Coffee Shop,0
+synthetic_1178,2479.34638,Coffee Shop,0
+synthetic_1179,4677.41938,Coffee Shop,1
+synthetic_1180,4123.31563,Gas Station,0
+synthetic_1181,3273.85653,Home Improvement,0
+synthetic_1182,3472.78651,Coffee Shop,1
+synthetic_1183,4671.51987,Entertainment,0
+synthetic_1184,1894.8582,Travel,0
+synthetic_1185,1776.59567,Gas Station,0
+synthetic_1186,3976.20927,Coffee Shop,0
+synthetic_1187,4800.63783,Electronics,0
+synthetic_1188,925.01009,Restaurant,0
+synthetic_1189,1674.11466,Online Retail,0
+synthetic_1190,4402.27195,Coffee Shop,0
+synthetic_1191,1278.71924,Entertainment,0
+synthetic_1192,1891.88925,Gas Station,0
+synthetic_1193,2986.58577,Entertainment,0
+synthetic_1194,1811.57622,Electronics,0
+synthetic_1195,2293.11041,Gas Station,0
+synthetic_1196,4823.40934,Travel,0
+synthetic_1197,390.40509,Online Retail,0
+synthetic_1198,4402.07334,Electronics,0
+synthetic_1199,4697.25926,Grocery,0
+synthetic_1200,2830.37854,Coffee Shop,1
+synthetic_1201,4944.19517,Home Improvement,0
+synthetic_1202,2225.99596,Grocery,0
+synthetic_1203,2233.86651,Travel,0
+synthetic_1204,4520.94904,Pharmacy,0
+synthetic_1205,1994.91137,Pharmacy,0
+synthetic_1206,3689.4836,Coffee Shop,0
+synthetic_1207,758.90658,Coffee Shop,0
+synthetic_1208,3503.79171,Online Retail,0
+synthetic_1209,4653.89451,Home Improvement,0
+synthetic_1210,1571.06109,Coffee Shop,0
+synthetic_1211,3087.99644,Coffee Shop,0
+synthetic_1212,3837.96373,Entertainment,1
+synthetic_1213,3661.94529,Gas Station,0
+synthetic_1214,2155.4718,Coffee Shop,0
+synthetic_1215,3378.56106,Home Improvement,0
+synthetic_1216,4923.07911,Coffee Shop,0
+synthetic_1217,612.32874,Gas Station,0
+synthetic_1218,4542.68628,Online Retail,0
+synthetic_1219,3284.04297,Coffee Shop,0
+synthetic_1220,2139.50236,Coffee Shop,0
+synthetic_1221,4123.99997,Restaurant,0
+synthetic_1222,783.76096,Gas Station,0
+synthetic_1223,4557.68284,Coffee Shop,0
+synthetic_1224,825.12187,Restaurant,0
+synthetic_1225,1486.9598,Coffee Shop,0
+synthetic_1226,891.31818,Pharmacy,0
+synthetic_1227,2183.65849,Coffee Shop,1
+synthetic_1228,2180.55251,Travel,0
+synthetic_1229,2271.91293,Coffee Shop,0
+synthetic_1230,2094.2501,Electronics,0
+synthetic_1231,3536.79962,Gas Station,0
+synthetic_1232,2925.63539,Electronics,0
+synthetic_1233,4998.77002,Coffee Shop,0
+synthetic_1234,2079.3271,Coffee Shop,1
+synthetic_1235,3250.55235,Entertainment,0
+synthetic_1236,4843.9025,Coffee Shop,0
+synthetic_1237,3765.6454,Travel,0
+synthetic_1238,1.02996,Online Retail,0
+synthetic_1239,2866.47565,Coffee Shop,0
+synthetic_1240,2051.99584,Electronics,0
+synthetic_1241,2532.16784,Electronics,0
+synthetic_1242,1784.91731,Online Retail,0
+synthetic_1243,1784.20088,Online Retail,1
+synthetic_1244,4580.91316,Coffee Shop,0
+synthetic_1245,2613.08127,Coffee Shop,1
+synthetic_1246,3912.18063,Coffee Shop,0
+synthetic_1247,4761.34925,Electronics,0
+synthetic_1248,4270.19233,Coffee Shop,0
+synthetic_1249,2887.04313,Coffee Shop,0
+synthetic_1250,3197.53805,Grocery,0
+synthetic_1251,3403.58928,Coffee Shop,0
+synthetic_1252,4365.35093,Electronics,0
+synthetic_1253,566.09223,Travel,0
+synthetic_1254,4266.44229,Grocery,0
+synthetic_1255,3444.85089,Travel,0
+synthetic_1256,4252.42358,Pharmacy,0
+synthetic_1257,2790.97288,Coffee Shop,1
+synthetic_1258,2530.05557,Gas Station,0
+synthetic_1259,3261.71206,Pharmacy,0
+synthetic_1260,2624.00317,Entertainment,1
+synthetic_1261,3652.54541,Electronics,0
+synthetic_1262,4780.20248,Grocery,0
+synthetic_1263,3789.65799,Electronics,0
+synthetic_1264,4759.49001,Pharmacy,0
+synthetic_1265,2285.59784,Restaurant,0
+synthetic_1266,1816.65448,Gas Station,0
+synthetic_1267,2186.76449,Home Improvement,0
+synthetic_1268,1692.02853,Travel,0
+synthetic_1269,706.63131,Grocery,0
+synthetic_1270,1619.65387,Travel,0
+synthetic_1271,4433.58783,Travel,0
+synthetic_1272,3682.84696,Electronics,0
+synthetic_1273,4365.38959,Restaurant,1
+synthetic_1274,2931.94177,Entertainment,0
+synthetic_1275,2569.91626,Restaurant,0
+synthetic_1276,592.40155,Home Improvement,0
+synthetic_1277,2298.4117,Gas Station,0
+synthetic_1278,781.66395,Electronics,0
+synthetic_1279,772.81624,Grocery,0
+synthetic_1280,4998.77002,Home Improvement,0
+synthetic_1281,4815.95636,Home Improvement,0
+synthetic_1282,1827.95969,Grocery,0
+synthetic_1283,665.92764,Home Improvement,0
+synthetic_1284,844.54798,Coffee Shop,0
+synthetic_1285,4496.62284,Pharmacy,0
+synthetic_1286,2588.65379,Travel,0
+synthetic_1287,3155.6942,Coffee Shop,0
+synthetic_1288,2020.89807,Coffee Shop,0
+synthetic_1289,2686.65969,Coffee Shop,0
+synthetic_1290,3862.26835,Coffee Shop,0
+synthetic_1291,4291.71389,Coffee Shop,0
+synthetic_1292,1720.01738,Entertainment,0
+synthetic_1293,2114.20097,Entertainment,0
+synthetic_1294,3364.09821,Electronics,0
+synthetic_1295,2514.77245,Home Improvement,0
+synthetic_1296,1520.00205,Online Retail,0
+synthetic_1297,4017.33224,Gas Station,0
+synthetic_1298,4866.87417,Entertainment,0
+synthetic_1299,4557.40192,Restaurant,0
+synthetic_1300,4845.91151,Gas Station,0
+synthetic_1301,1433.98329,Electronics,0
+synthetic_1302,2108.86381,Electronics,0
+synthetic_1303,427.07918,Coffee Shop,0
+synthetic_1304,3397.12139,Travel,0
+synthetic_1305,633.94123,Electronics,0
+synthetic_1306,4419.89369,Gas Station,0
+synthetic_1307,4656.88896,Home Improvement,0
+synthetic_1308,606.94274,Entertainment,0
+synthetic_1309,1818.28469,Online Retail,0
+synthetic_1310,1660.99305,Electronics,0
+synthetic_1311,4549.73843,Restaurant,0
+synthetic_1312,3126.98095,Coffee Shop,1
+synthetic_1313,4429.53686,Coffee Shop,1
+synthetic_1314,4384.33427,Restaurant,0
+synthetic_1315,2348.32846,Electronics,0
+synthetic_1316,1923.35999,Coffee Shop,1
+synthetic_1317,408.00474,Pharmacy,0
+synthetic_1318,1501.38211,Coffee Shop,0
+synthetic_1319,4574.56934,Online Retail,0
+synthetic_1320,2129.33218,Coffee Shop,0
+synthetic_1321,2849.05023,Coffee Shop,0
+synthetic_1322,2525.68029,Entertainment,0
+synthetic_1323,4250.50516,Grocery,0
+synthetic_1324,1736.756,Coffee Shop,0
+synthetic_1325,3768.93111,Travel,0
+synthetic_1326,738.90899,Grocery,0
+synthetic_1327,3548.7604,Coffee Shop,0
+synthetic_1328,2503.15105,Electronics,0
+synthetic_1329,1804.71742,Electronics,0
+synthetic_1330,4029.05326,Coffee Shop,0
+synthetic_1331,4223.48873,Travel,0
+synthetic_1332,389.2873,Coffee Shop,0
+synthetic_1333,3560.70971,Entertainment,0
+synthetic_1334,2873.87958,Travel,0
+synthetic_1335,954.92244,Coffee Shop,0
+synthetic_1336,4833.29011,Coffee Shop,0
+synthetic_1337,1457.78692,Home Improvement,0
+synthetic_1338,1969.96382,Restaurant,0
+synthetic_1339,2305.18846,Entertainment,0
+synthetic_1340,3978.4017,Gas Station,0
+synthetic_1341,1951.9714,Gas Station,0
+synthetic_1342,3395.45464,Electronics,0
+synthetic_1343,2968.20222,Electronics,0
+synthetic_1344,1584.60468,Gas Station,0
+synthetic_1345,1424.89358,Grocery,0
+synthetic_1346,1125.17553,Gas Station,0
+synthetic_1347,2663.4037,Travel,0
+synthetic_1348,2363.35611,Home Improvement,0
+synthetic_1349,1648.22844,Pharmacy,0
+synthetic_1350,3382.78717,Electronics,0
+synthetic_1351,4740.48459,Coffee Shop,0
+synthetic_1352,4430.01448,Gas Station,0
+synthetic_1353,4222.77661,Gas Station,0
+synthetic_1354,393.97965,Coffee Shop,0
+synthetic_1355,1420.32659,Coffee Shop,1
+synthetic_1356,3657.16511,Travel,0
+synthetic_1357,4604.04427,Entertainment,0
+synthetic_1358,2247.74699,Pharmacy,0
+synthetic_1359,4950.83475,Gas Station,0
+synthetic_1360,568.04015,Coffee Shop,0
+synthetic_1361,805.51804,Gas Station,0
+synthetic_1362,2479.9085,Pharmacy,0
+synthetic_1363,2930.94067,Online Retail,0
+synthetic_1364,4549.22509,Grocery,0
+synthetic_1365,565.2469,Coffee Shop,1
+synthetic_1366,614.96928,Gas Station,0
+synthetic_1367,4060.15035,Coffee Shop,0
+synthetic_1368,3144.67775,Gas Station,0
+synthetic_1369,1709.34218,Coffee Shop,0
+synthetic_1370,781.05622,Grocery,0
+synthetic_1371,1921.85112,Gas Station,0
+synthetic_1372,2633.50949,Online Retail,0
+synthetic_1373,4402.04021,Coffee Shop,0
+synthetic_1374,2638.29781,Gas Station,0
+synthetic_1375,1157.16824,Grocery,0
+synthetic_1376,4693.5722,Electronics,0
+synthetic_1377,526.64611,Travel,0
+synthetic_1378,1999.2603,Coffee Shop,0
+synthetic_1379,4213.35983,Entertainment,1
+synthetic_1380,2583.25934,Entertainment,1
+synthetic_1381,4998.77002,Coffee Shop,0
+synthetic_1382,4066.78751,Online Retail,0
+synthetic_1383,3674.0077,Electronics,0
+synthetic_1384,4806.55891,Coffee Shop,0
+synthetic_1385,4324.42553,Coffee Shop,0
+synthetic_1386,597.38619,Coffee Shop,0
+synthetic_1387,3772.84801,Travel,0
+synthetic_1388,4485.65466,Home Improvement,0
+synthetic_1389,3288.24346,Entertainment,0
+synthetic_1390,4956.80328,Coffee Shop,0
+synthetic_1391,2245.26083,Grocery,0
+synthetic_1392,2240.16088,Coffee Shop,1
+synthetic_1393,4998.77002,Travel,0
+synthetic_1394,2539.32082,Pharmacy,0
+synthetic_1395,1380.40535,Coffee Shop,1
+synthetic_1396,1315.11157,Electronics,0
+synthetic_1397,2243.61953,Home Improvement,0
+synthetic_1398,760.81344,Home Improvement,0
+synthetic_1399,1130.86194,Coffee Shop,0
+synthetic_1400,1896.35094,Electronics,0
+synthetic_1401,2431.06206,Pharmacy,0
+synthetic_1402,3660.87004,Coffee Shop,0
+synthetic_1403,4021.02966,Travel,0
+synthetic_1404,3412.9002,Online Retail,0
+synthetic_1405,3436.84385,Travel,1
+synthetic_1406,3864.94798,Entertainment,0
+synthetic_1407,4672.13623,Grocery,0
+synthetic_1408,668.48726,Entertainment,0
+synthetic_1409,4903.89303,Coffee Shop,0
+synthetic_1410,4886.31097,Entertainment,0
+synthetic_1411,2118.24258,Pharmacy,0
+synthetic_1412,2659.31981,Electronics,0
+synthetic_1413,4491.41526,Coffee Shop,0
+synthetic_1414,1240.03571,Restaurant,0
+synthetic_1415,425.83388,Gas Station,0
+synthetic_1416,2363.46157,Online Retail,0
+synthetic_1417,3686.74557,Online Retail,0
+synthetic_1418,4406.7474,Pharmacy,0
+synthetic_1419,4308.30378,Coffee Shop,0
+synthetic_1420,2647.58976,Coffee Shop,0
+synthetic_1421,4100.24216,Coffee Shop,0
+synthetic_1422,322.70983,Online Retail,0
+synthetic_1423,2698.83053,Coffee Shop,0
+synthetic_1424,4891.18122,Gas Station,0
+synthetic_1425,1549.97497,Restaurant,0
+synthetic_1426,2035.32292,Coffee Shop,0
+synthetic_1427,1475.5517,Electronics,0
+synthetic_1428,3162.06658,Travel,0
+synthetic_1429,572.36048,Gas Station,0
+synthetic_1430,4133.41727,Electronics,0
+synthetic_1431,1440.58387,Travel,0
+synthetic_1432,3303.58442,Entertainment,0
+synthetic_1433,4832.0122,Coffee Shop,0
+synthetic_1434,4359.15585,Restaurant,0
+synthetic_1435,4446.41352,Entertainment,0
+synthetic_1436,3309.42311,Home Improvement,0
+synthetic_1437,789.39732,Online Retail,0
+synthetic_1438,4512.9608,Home Improvement,0
+synthetic_1439,2253.32253,Coffee Shop,0
+synthetic_1440,3938.29557,Home Improvement,0
+synthetic_1441,4628.81789,Gas Station,0
+synthetic_1442,4536.59921,Restaurant,0
+synthetic_1443,1402.62306,Coffee Shop,0
+synthetic_1444,1291.03867,Coffee Shop,0
+synthetic_1445,2386.77345,Gas Station,0
+synthetic_1446,2425.72395,Grocery,0
+synthetic_1447,3875.39644,Online Retail,0
+synthetic_1448,4395.26812,Coffee Shop,0
+synthetic_1449,1559.42428,Entertainment,0
+synthetic_1450,2638.10504,Entertainment,0
+synthetic_1451,4817.97883,Restaurant,0
+synthetic_1452,3004.49869,Entertainment,1
+synthetic_1453,367.23808,Coffee Shop,1
+synthetic_1454,3888.382,Travel,0
+synthetic_1455,2257.22136,Travel,0
+synthetic_1456,1882.19699,Entertainment,0
+synthetic_1457,3975.55944,Pharmacy,0
+synthetic_1458,1755.79201,Electronics,0
+synthetic_1459,4497.57221,Coffee Shop,0
+synthetic_1460,404.08939,Coffee Shop,0
+synthetic_1461,4463.49363,Online Retail,0
+synthetic_1462,1736.33385,Travel,0
+synthetic_1463,497.28919,Gas Station,0
+synthetic_1464,4794.70554,Coffee Shop,0
+synthetic_1465,586.77916,Gas Station,0
+synthetic_1466,4917.70053,Gas Station,0
+synthetic_1467,1134.0254,Gas Station,0
+synthetic_1468,1231.38324,Electronics,0
+synthetic_1469,3795.21317,Electronics,0
+synthetic_1470,785.22902,Gas Station,0
+synthetic_1471,1048.92435,Grocery,0
+synthetic_1472,2636.98255,Coffee Shop,0
+synthetic_1473,872.9034,Coffee Shop,0
+synthetic_1474,2332.48306,Gas Station,0
+synthetic_1475,4832.01876,Electronics,0
+synthetic_1476,2804.45616,Coffee Shop,0
+synthetic_1477,3630.77789,Travel,0
+synthetic_1478,4243.11637,Coffee Shop,0
+synthetic_1479,865.74013,Pharmacy,0
+synthetic_1480,1436.57112,Pharmacy,0
+synthetic_1481,1587.34427,Gas Station,0
+synthetic_1482,4309.98839,Travel,0
+synthetic_1483,4020.91094,Gas Station,0
+synthetic_1484,2955.50042,Electronics,0
+synthetic_1485,3582.70104,Electronics,0
+synthetic_1486,3456.18799,Coffee Shop,0
+synthetic_1487,2999.01136,Coffee Shop,0
+synthetic_1488,1016.13273,Electronics,0
+synthetic_1489,787.78691,Coffee Shop,0
+synthetic_1490,3180.75633,Coffee Shop,0
+synthetic_1491,3047.22672,Coffee Shop,0
+synthetic_1492,672.67783,Home Improvement,0
+synthetic_1493,4524.60418,Online Retail,0
+synthetic_1494,2359.36279,Online Retail,1
+synthetic_1495,2847.87477,Home Improvement,0
+synthetic_1496,3408.977,Electronics,0
+synthetic_1497,3072.85904,Electronics,0
+synthetic_1498,3654.51206,Pharmacy,0
+synthetic_1499,3144.59371,Restaurant,0
+synthetic_1500,848.86899,Coffee Shop,0
+synthetic_1501,1564.88585,Home Improvement,0
+synthetic_1502,3464.5517,Gas Station,0
+synthetic_1503,3876.56798,Home Improvement,1
+synthetic_1504,3362.89708,Electronics,0
+synthetic_1505,3397.81228,Pharmacy,0
+synthetic_1506,546.40523,Coffee Shop,0
+synthetic_1507,2946.24079,Coffee Shop,0
+synthetic_1508,1535.3519,Electronics,0
+synthetic_1509,2714.11117,Coffee Shop,0
+synthetic_1510,2475.67828,Coffee Shop,0
+synthetic_1511,3968.54992,Online Retail,0
+synthetic_1512,4363.23063,Coffee Shop,0
+synthetic_1513,2401.95625,Coffee Shop,0
+synthetic_1514,2866.20763,Pharmacy,0
+synthetic_1515,3967.65006,Coffee Shop,0
+synthetic_1516,2443.50508,Pharmacy,0
+synthetic_1517,454.69005,Coffee Shop,0
+synthetic_1518,4411.42214,Coffee Shop,0
+synthetic_1519,2190.12634,Entertainment,0
+synthetic_1520,3984.00166,Home Improvement,0
+synthetic_1521,679.41006,Gas Station,0
+synthetic_1522,1654.04909,Coffee Shop,0
+synthetic_1523,4328.8273,Gas Station,0
+synthetic_1524,1431.36026,Restaurant,0
+synthetic_1525,4473.95348,Electronics,0
+synthetic_1526,4866.70387,Coffee Shop,0
+synthetic_1527,2610.80755,Electronics,0
+synthetic_1528,4329.99599,Gas Station,0
+synthetic_1529,742.08358,Electronics,0
+synthetic_1530,1717.15416,Home Improvement,0
+synthetic_1531,537.57633,Home Improvement,0
+synthetic_1532,4850.54984,Gas Station,0
+synthetic_1533,4650.10633,Online Retail,0
+synthetic_1534,2200.2281,Electronics,0
+synthetic_1535,1535.44836,Entertainment,0
+synthetic_1536,2575.79315,Entertainment,0
+synthetic_1537,4187.29622,Home Improvement,0
+synthetic_1538,3371.25164,Pharmacy,0
+synthetic_1539,4305.75003,Online Retail,0
+synthetic_1540,4206.53873,Coffee Shop,0
+synthetic_1541,3677.75887,Online Retail,0
+synthetic_1542,3266.09908,Grocery,0
+synthetic_1543,4998.77002,Electronics,0
+synthetic_1544,3635.77055,Gas Station,0
+synthetic_1545,2616.21252,Gas Station,0
+synthetic_1546,4430.86049,Travel,0
+synthetic_1547,3936.02653,Travel,0
+synthetic_1548,2405.2035,Entertainment,0
+synthetic_1549,2502.35121,Entertainment,0
+synthetic_1550,4731.12751,Coffee Shop,0
+synthetic_1551,4271.39536,Online Retail,0
+synthetic_1552,658.83529,Coffee Shop,0
+synthetic_1553,4147.808,Restaurant,0
+synthetic_1554,3842.22961,Electronics,0
+synthetic_1555,1301.5257,Online Retail,0
+synthetic_1556,1419.27576,Entertainment,0
+synthetic_1557,2117.06635,Grocery,0
+synthetic_1558,1376.41926,Coffee Shop,0
+synthetic_1559,1553.72864,Home Improvement,0
+synthetic_1560,3824.2519,Coffee Shop,0
+synthetic_1561,3351.03077,Pharmacy,0
+synthetic_1562,221.50315,Grocery,1
+synthetic_1563,1907.63347,Pharmacy,0
+synthetic_1564,1540.7737,Home Improvement,0
+synthetic_1565,161.96592,Entertainment,0
+synthetic_1566,4311.53617,Online Retail,0
+synthetic_1567,1587.25411,Restaurant,1
+synthetic_1568,548.62993,Travel,0
+synthetic_1569,2101.03013,Restaurant,0
+synthetic_1570,775.80136,Restaurant,0
+synthetic_1571,543.52605,Gas Station,0
+synthetic_1572,4719.39838,Home Improvement,0
+synthetic_1573,4895.32623,Electronics,0
+synthetic_1574,2068.9439,Coffee Shop,0
+synthetic_1575,4330.99385,Online Retail,1
+synthetic_1576,2334.23537,Entertainment,0
+synthetic_1577,2960.66098,Coffee Shop,1
+synthetic_1578,4289.91557,Travel,0
+synthetic_1579,2046.08784,Gas Station,0
+synthetic_1580,1945.83964,Entertainment,0
+synthetic_1581,2974.95145,Entertainment,0
+synthetic_1582,447.14648,Online Retail,0
+synthetic_1583,559.41469,Online Retail,0
+synthetic_1584,4588.78941,Home Improvement,0
+synthetic_1585,3424.35308,Coffee Shop,0
+synthetic_1586,2746.82208,Pharmacy,0
+synthetic_1587,3401.13949,Home Improvement,0
+synthetic_1588,2860.57593,Electronics,0
+synthetic_1589,525.78836,Electronics,0
+synthetic_1590,3780.05943,Coffee Shop,1
+synthetic_1591,2899.50936,Travel,0
+synthetic_1592,2826.18532,Electronics,0
+synthetic_1593,3956.10366,Grocery,0
+synthetic_1594,2486.29296,Coffee Shop,0
+synthetic_1595,3426.19575,Coffee Shop,0
+synthetic_1596,3369.05196,Home Improvement,0
+synthetic_1597,3393.40551,Coffee Shop,0
+synthetic_1598,1761.77865,Grocery,0
+synthetic_1599,553.64511,Coffee Shop,0
+synthetic_1600,478.41491,Coffee Shop,0
+synthetic_1601,3805.13001,Grocery,0
+synthetic_1602,3529.61832,Grocery,0
+synthetic_1603,1128.10415,Coffee Shop,0
+synthetic_1604,1974.57041,Gas Station,0
+synthetic_1605,3869.68717,Coffee Shop,1
+synthetic_1606,3791.81746,Gas Station,0
+synthetic_1607,941.62603,Coffee Shop,0
+synthetic_1608,3465.0382,Coffee Shop,1
+synthetic_1609,2717.61701,Coffee Shop,0
+synthetic_1610,1475.93476,Restaurant,0
+synthetic_1611,3679.422,Coffee Shop,1
+synthetic_1612,4893.58502,Coffee Shop,0
+synthetic_1613,1565.82254,Restaurant,0
+synthetic_1614,2694.94745,Gas Station,0
+synthetic_1615,753.8914,Entertainment,0
+synthetic_1616,4000.11444,Pharmacy,0
+synthetic_1617,1989.17022,Restaurant,0
+synthetic_1618,2156.0636,Gas Station,0
+synthetic_1619,3282.22204,Grocery,0
+synthetic_1620,2190.57132,Grocery,0
+synthetic_1621,2304.69249,Restaurant,0
+synthetic_1622,3043.89106,Pharmacy,0
+synthetic_1623,3242.22203,Home Improvement,0
+synthetic_1624,341.74752,Coffee Shop,0
+synthetic_1625,4948.04012,Coffee Shop,0
+synthetic_1626,1739.68375,Electronics,0
+synthetic_1627,2967.61986,Entertainment,0
+synthetic_1628,3948.83859,Entertainment,1
+synthetic_1629,3022.05386,Restaurant,0
+synthetic_1630,3929.19283,Coffee Shop,0
+synthetic_1631,1343.13552,Electronics,0
+synthetic_1632,1813.30923,Grocery,0
+synthetic_1633,3792.77538,Coffee Shop,0
+synthetic_1634,2551.88559,Gas Station,0
+synthetic_1635,3112.39537,Electronics,0
+synthetic_1636,2231.12803,Pharmacy,0
+synthetic_1637,2612.5204,Entertainment,1
+synthetic_1638,2354.81512,Entertainment,0
+synthetic_1639,1155.30271,Gas Station,0
+synthetic_1640,2041.91793,Coffee Shop,0
+synthetic_1641,4669.2322,Gas Station,0
+synthetic_1642,606.23511,Gas Station,0
+synthetic_1643,4104.44411,Home Improvement,0
+synthetic_1644,2933.85838,Coffee Shop,0
+synthetic_1645,1594.44016,Gas Station,0
+synthetic_1646,4998.77002,Travel,0
+synthetic_1647,4399.55117,Coffee Shop,1
+synthetic_1648,2602.34258,Electronics,0
+synthetic_1649,2448.63953,Online Retail,1
+synthetic_1650,3059.02656,Gas Station,0
+synthetic_1651,2892.54978,Grocery,0
+synthetic_1652,3705.74978,Coffee Shop,0
+synthetic_1653,3410.56637,Coffee Shop,0
+synthetic_1654,4350.96452,Travel,0
+synthetic_1655,2925.66597,Entertainment,0
+synthetic_1656,3451.65612,Electronics,0
+synthetic_1657,2415.72923,Grocery,0
+synthetic_1658,4175.24804,Coffee Shop,0
+synthetic_1659,3753.44253,Coffee Shop,0
+synthetic_1660,4166.00933,Coffee Shop,0
+synthetic_1661,4998.77002,Entertainment,0
+synthetic_1662,2551.45162,Gas Station,0
+synthetic_1663,714.35952,Home Improvement,0
+synthetic_1664,686.68376,Coffee Shop,0
+synthetic_1665,4494.56673,Restaurant,0
+synthetic_1666,3726.78613,Coffee Shop,0
+synthetic_1667,1816.31265,Gas Station,0
+synthetic_1668,3225.77916,Online Retail,0
+synthetic_1669,3522.89781,Home Improvement,1
+synthetic_1670,3237.40907,Restaurant,0
+synthetic_1671,4897.3468,Electronics,0
+synthetic_1672,2867.31882,Coffee Shop,1
+synthetic_1673,1902.61703,Home Improvement,0
+synthetic_1674,2011.3275,Entertainment,0
+synthetic_1675,4592.30841,Home Improvement,0
+synthetic_1676,518.64338,Gas Station,0
+synthetic_1677,1689.39851,Electronics,0
+synthetic_1678,4584.18576,Home Improvement,0
+synthetic_1679,2405.5647,Electronics,0
+synthetic_1680,4009.67202,Grocery,0
+synthetic_1681,4209.80287,Electronics,0
+synthetic_1682,978.25267,Pharmacy,0
+synthetic_1683,328.85332,Electronics,0
+synthetic_1684,926.83205,Gas Station,0
+synthetic_1685,3285.4999,Restaurant,0
+synthetic_1686,2448.48759,Online Retail,0
+synthetic_1687,3121.11789,Coffee Shop,0
+synthetic_1688,468.67994,Pharmacy,0
+synthetic_1689,2484.62559,Coffee Shop,0
+synthetic_1690,3418.29232,Electronics,0
+synthetic_1691,3496.16065,Online Retail,1
+synthetic_1692,2306.75105,Electronics,0
+synthetic_1693,1293.93338,Coffee Shop,0
+synthetic_1694,530.68207,Online Retail,0
+synthetic_1695,2657.61229,Online Retail,0
+synthetic_1696,3564.63929,Coffee Shop,1
+synthetic_1697,4299.95301,Home Improvement,0
+synthetic_1698,4058.38567,Home Improvement,0
+synthetic_1699,3276.34013,Coffee Shop,0
+synthetic_1700,276.36823,Online Retail,0
+synthetic_1701,2403.47262,Home Improvement,0
+synthetic_1702,159.55901,Entertainment,0
+synthetic_1703,4523.04743,Coffee Shop,0
+synthetic_1704,1631.82724,Coffee Shop,0
+synthetic_1705,1757.79821,Restaurant,0
+synthetic_1706,3858.6623,Entertainment,0
+synthetic_1707,4490.91935,Grocery,0
+synthetic_1708,219.81509,Online Retail,0
+synthetic_1709,1781.29832,Travel,1
+synthetic_1710,4610.86279,Electronics,0
+synthetic_1711,4808.9194,Coffee Shop,0
+synthetic_1712,1910.15348,Pharmacy,0
+synthetic_1713,2050.39324,Coffee Shop,0
+synthetic_1714,2991.744,Pharmacy,0
+synthetic_1715,1424.2114,Gas Station,0
+synthetic_1716,4558.82788,Home Improvement,0
+synthetic_1717,2575.87153,Travel,1
+synthetic_1718,4938.5928,Online Retail,0
+synthetic_1719,3280.92627,Pharmacy,0
+synthetic_1720,2250.18373,Pharmacy,0
+synthetic_1721,2527.32411,Coffee Shop,1
+synthetic_1722,4690.75255,Coffee Shop,0
+synthetic_1723,1337.96056,Electronics,0
+synthetic_1724,4506.42113,Entertainment,0
+synthetic_1725,1313.48588,Home Improvement,0
+synthetic_1726,2315.09982,Pharmacy,0
+synthetic_1727,3007.41018,Entertainment,0
+synthetic_1728,3070.20974,Electronics,0
+synthetic_1729,1777.15176,Coffee Shop,0
+synthetic_1730,2953.71063,Travel,0
+synthetic_1731,2062.09351,Coffee Shop,0
+synthetic_1732,681.66478,Entertainment,0
+synthetic_1733,1678.40272,Gas Station,0
+synthetic_1734,3618.36269,Entertainment,0
+synthetic_1735,409.56408,Gas Station,0
+synthetic_1736,4341.45473,Coffee Shop,0
+synthetic_1737,1549.88378,Coffee Shop,1
+synthetic_1738,4386.22888,Travel,0
+synthetic_1739,844.19977,Grocery,0
+synthetic_1740,4243.67181,Electronics,0
+synthetic_1741,4465.76284,Home Improvement,0
+synthetic_1742,4853.10773,Coffee Shop,0
+synthetic_1743,1383.91167,Entertainment,0
+synthetic_1744,4299.46797,Coffee Shop,0
+synthetic_1745,3300.4245,Electronics,0
+synthetic_1746,4085.10584,Gas Station,0
+synthetic_1747,3756.86706,Coffee Shop,0
+synthetic_1748,4998.77002,Coffee Shop,0
+synthetic_1749,3830.77475,Home Improvement,0
+synthetic_1750,3578.83418,Home Improvement,0
+synthetic_1751,2666.9211,Grocery,0
+synthetic_1752,4659.48308,Travel,0
+synthetic_1753,4102.90047,Restaurant,0
+synthetic_1754,3378.58254,Entertainment,0
+synthetic_1755,4432.13409,Electronics,0
+synthetic_1756,3459.3128,Entertainment,0
+synthetic_1757,3351.49226,Coffee Shop,0
+synthetic_1758,1192.30793,Electronics,0
+synthetic_1759,4523.39874,Travel,0
+synthetic_1760,4153.49544,Entertainment,1
+synthetic_1761,1401.64807,Entertainment,1
+synthetic_1762,916.2421,Gas Station,0
+synthetic_1763,3958.71832,Pharmacy,0
+synthetic_1764,1394.39567,Entertainment,0
+synthetic_1765,2600.30041,Coffee Shop,0
+synthetic_1766,4289.22692,Home Improvement,0
+synthetic_1767,692.61209,Coffee Shop,0
+synthetic_1768,389.96853,Pharmacy,0
+synthetic_1769,3261.03101,Home Improvement,0
+synthetic_1770,4719.80905,Travel,0
+synthetic_1771,4166.22761,Coffee Shop,0
+synthetic_1772,2998.73084,Restaurant,0
+synthetic_1773,4535.95059,Restaurant,0
+synthetic_1774,3206.8142,Entertainment,0
+synthetic_1775,1930.23001,Electronics,0
+synthetic_1776,625.40877,Coffee Shop,0
+synthetic_1777,3596.1656,Gas Station,0
+synthetic_1778,3935.44866,Online Retail,0
+synthetic_1779,3273.8592,Restaurant,0
+synthetic_1780,3822.82689,Travel,1
+synthetic_1781,3049.68505,Travel,0
+synthetic_1782,2688.76433,Entertainment,0
+synthetic_1783,3040.1609,Travel,0
+synthetic_1784,546.61522,Restaurant,0
+synthetic_1785,4420.13267,Electronics,0
+synthetic_1786,2788.50103,Entertainment,0
+synthetic_1787,2053.19813,Electronics,0
+synthetic_1788,495.35714,Online Retail,0
+synthetic_1789,3745.89672,Gas Station,0
+synthetic_1790,3638.6361,Coffee Shop,0
+synthetic_1791,4524.46993,Gas Station,0
+synthetic_1792,4361.65593,Home Improvement,0
+synthetic_1793,2655.13021,Coffee Shop,0
+synthetic_1794,1950.52245,Coffee Shop,0
+synthetic_1795,2027.40728,Coffee Shop,0
+synthetic_1796,3731.33223,Coffee Shop,0
+synthetic_1797,3566.14618,Online Retail,0
+synthetic_1798,1693.40307,Electronics,0
+synthetic_1799,4291.86384,Electronics,0
+synthetic_1800,2804.82003,Entertainment,0
+synthetic_1801,1855.57445,Grocery,0
+synthetic_1802,2904.06789,Online Retail,0
+synthetic_1803,455.56989,Home Improvement,0
+synthetic_1804,3229.8731,Coffee Shop,0
+synthetic_1805,1956.40449,Coffee Shop,0
+synthetic_1806,2150.25744,Pharmacy,0
+synthetic_1807,1565.01587,Gas Station,0
+synthetic_1808,2729.85523,Grocery,0
+synthetic_1809,3081.19359,Entertainment,0
+synthetic_1810,2076.09734,Restaurant,0
+synthetic_1811,2177.99587,Coffee Shop,0
+synthetic_1812,698.75351,Restaurant,0
+synthetic_1813,3442.71213,Coffee Shop,0
+synthetic_1814,4060.8792,Gas Station,0
+synthetic_1815,4663.61533,Entertainment,0
+synthetic_1816,3439.08063,Travel,0
+synthetic_1817,3920.39413,Home Improvement,0
+synthetic_1818,114.52069,Pharmacy,0
+synthetic_1819,3402.08188,Coffee Shop,1
+synthetic_1820,4540.20052,Coffee Shop,0
+synthetic_1821,2050.44194,Coffee Shop,0
+synthetic_1822,1346.91326,Electronics,0
+synthetic_1823,4973.68926,Coffee Shop,0
+synthetic_1824,948.20073,Entertainment,0
+synthetic_1825,2445.37162,Electronics,0
+synthetic_1826,1552.61301,Coffee Shop,0
+synthetic_1827,2493.37426,Coffee Shop,0
+synthetic_1828,4742.24961,Home Improvement,0
+synthetic_1829,938.06148,Gas Station,0
+synthetic_1830,783.95663,Coffee Shop,0
+synthetic_1831,4794.9302,Restaurant,1
+synthetic_1832,4733.19139,Coffee Shop,0
+synthetic_1833,4933.40696,Home Improvement,0
+synthetic_1834,1990.84021,Home Improvement,0
+synthetic_1835,1581.26195,Gas Station,0
+synthetic_1836,1317.53098,Electronics,0
+synthetic_1837,695.9682,Entertainment,0
+synthetic_1838,1582.85675,Grocery,0
+synthetic_1839,2210.50802,Electronics,0
+synthetic_1840,4506.32864,Coffee Shop,0
+synthetic_1841,1414.05196,Coffee Shop,0
+synthetic_1842,3682.60901,Online Retail,0
+synthetic_1843,2888.48652,Home Improvement,0
+synthetic_1844,3278.54154,Restaurant,0
+synthetic_1845,4471.87873,Coffee Shop,0
+synthetic_1846,1690.4918,Coffee Shop,0
+synthetic_1847,3580.94197,Entertainment,0
+synthetic_1848,3830.23872,Coffee Shop,0
+synthetic_1849,2811.17128,Pharmacy,0
+synthetic_1850,2971.00039,Restaurant,0
+synthetic_1851,3466.58935,Restaurant,0
+synthetic_1852,2694.9003,Pharmacy,0
+synthetic_1853,2815.09853,Coffee Shop,0
+synthetic_1854,1573.56567,Travel,0
+synthetic_1855,493.23356,Travel,0
+synthetic_1856,1564.10575,Travel,0
+synthetic_1857,1909.66283,Entertainment,0
+synthetic_1858,655.19689,Grocery,0
+synthetic_1859,2763.89791,Travel,1
+synthetic_1860,2828.09067,Travel,0
+synthetic_1861,1127.21939,Coffee Shop,0
+synthetic_1862,1582.1706,Coffee Shop,0
+synthetic_1863,2541.86696,Pharmacy,0
+synthetic_1864,4733.70973,Travel,0
+synthetic_1865,4012.86197,Home Improvement,0
+synthetic_1866,4350.55885,Coffee Shop,0
+synthetic_1867,470.20978,Electronics,0
+synthetic_1868,3261.13531,Coffee Shop,0
+synthetic_1869,4660.68179,Gas Station,0
+synthetic_1870,4004.79591,Gas Station,0
+synthetic_1871,4720.82485,Home Improvement,0
+synthetic_1872,1367.58975,Gas Station,0
+synthetic_1873,237.75053,Online Retail,0
+synthetic_1874,4700.89352,Home Improvement,0
+synthetic_1875,4640.47852,Coffee Shop,0
+synthetic_1876,2575.05058,Coffee Shop,0
+synthetic_1877,4866.51544,Coffee Shop,0
+synthetic_1878,1780.81307,Electronics,0
+synthetic_1879,2675.57081,Electronics,0
+synthetic_1880,1589.93322,Coffee Shop,0
+synthetic_1881,424.39308,Entertainment,0
+synthetic_1882,384.76475,Electronics,1
+synthetic_1883,604.33291,Coffee Shop,0
+synthetic_1884,241.1301,Coffee Shop,0
+synthetic_1885,424.5998,Gas Station,0
+synthetic_1886,4347.6864,Grocery,0
+synthetic_1887,3543.65471,Coffee Shop,1
+synthetic_1888,2508.39227,Grocery,0
+synthetic_1889,463.0824,Coffee Shop,0
+synthetic_1890,4291.17277,Pharmacy,0
+synthetic_1891,926.08025,Electronics,0
+synthetic_1892,1640.35452,Restaurant,0
+synthetic_1893,3707.74404,Electronics,0
+synthetic_1894,610.47382,Entertainment,0
+synthetic_1895,3406.26338,Pharmacy,0
+synthetic_1896,4363.88684,Coffee Shop,0
+synthetic_1897,4470.31576,Electronics,0
+synthetic_1898,1926.23603,Restaurant,0
+synthetic_1899,3809.53359,Online Retail,0
+synthetic_1900,3422.55959,Restaurant,0
+synthetic_1901,4802.44599,Travel,0
+synthetic_1902,4121.0478,Restaurant,1
+synthetic_1903,1630.36754,Restaurant,0
+synthetic_1904,3096.67708,Electronics,0
+synthetic_1905,4581.95347,Home Improvement,0
+synthetic_1906,247.05808,Online Retail,0
+synthetic_1907,1357.46422,Gas Station,0
+synthetic_1908,667.2323,Online Retail,0
+synthetic_1909,2895.73554,Electronics,0
+synthetic_1910,4340.87669,Pharmacy,0
+synthetic_1911,3997.30014,Pharmacy,0
+synthetic_1912,2640.05838,Online Retail,0
+synthetic_1913,2733.73637,Gas Station,0
+synthetic_1914,3870.21328,Coffee Shop,0
+synthetic_1915,3337.0206,Coffee Shop,0
+synthetic_1916,2745.53049,Coffee Shop,0
+synthetic_1917,4990.12437,Home Improvement,0
+synthetic_1918,2999.89974,Coffee Shop,0
+synthetic_1919,3764.97591,Coffee Shop,0
+synthetic_1920,2603.25933,Entertainment,0
+synthetic_1921,4963.99036,Home Improvement,0
+synthetic_1922,1280.61765,Grocery,0
+synthetic_1923,1642.13188,Electronics,0
+synthetic_1924,3760.66835,Coffee Shop,0
+synthetic_1925,1877.19432,Gas Station,0
+synthetic_1926,3475.04692,Entertainment,0
+synthetic_1927,2941.76366,Entertainment,0
+synthetic_1928,4135.41817,Gas Station,0
+synthetic_1929,1777.52416,Coffee Shop,0
+synthetic_1930,2954.56291,Grocery,0
+synthetic_1931,2630.84248,Coffee Shop,0
+synthetic_1932,1955.99925,Pharmacy,0
+synthetic_1933,3252.14741,Travel,0
+synthetic_1934,1500.40417,Coffee Shop,0
+synthetic_1935,1195.81476,Electronics,0
+synthetic_1936,3782.42156,Electronics,1
+synthetic_1937,3921.43081,Coffee Shop,0
+synthetic_1938,1564.06839,Entertainment,0
+synthetic_1939,2521.82477,Pharmacy,0
+synthetic_1940,4725.86696,Grocery,0
+synthetic_1941,3712.77061,Travel,0
+synthetic_1942,1299.66957,Coffee Shop,0
+synthetic_1943,4659.63251,Coffee Shop,0
+synthetic_1944,1469.33185,Grocery,0
+synthetic_1945,4885.50102,Coffee Shop,0
+synthetic_1946,248.15878,Online Retail,1
+synthetic_1947,4431.65768,Home Improvement,0
+synthetic_1948,2616.24848,Travel,0
+synthetic_1949,1641.33797,Coffee Shop,0
+synthetic_1950,1165.76808,Gas Station,0
+synthetic_1951,1726.00092,Coffee Shop,0
+synthetic_1952,3754.77066,Coffee Shop,0
+synthetic_1953,478.40749,Coffee Shop,0
+synthetic_1954,4352.37253,Restaurant,0
+synthetic_1955,3920.25022,Coffee Shop,0
+synthetic_1956,3719.6081,Electronics,0
+synthetic_1957,1415.71526,Restaurant,0
+synthetic_1958,2425.09541,Electronics,0
+synthetic_1959,1719.00002,Home Improvement,0
+synthetic_1960,3566.86192,Travel,0
+synthetic_1961,3114.09749,Coffee Shop,0
+synthetic_1962,4998.77002,Entertainment,0
+synthetic_1963,1561.71868,Electronics,0
+synthetic_1964,3060.42573,Coffee Shop,0
+synthetic_1965,682.61882,Coffee Shop,0
+synthetic_1966,1733.35675,Home Improvement,0
+synthetic_1967,3415.91708,Coffee Shop,0
+synthetic_1968,662.22315,Entertainment,0
+synthetic_1969,2820.40188,Entertainment,0
+synthetic_1970,1732.8341,Restaurant,0
+synthetic_1971,875.52065,Coffee Shop,0
+synthetic_1972,477.84584,Online Retail,1
+synthetic_1973,2084.86593,Coffee Shop,0
+synthetic_1974,3326.15371,Coffee Shop,0
+synthetic_1975,480.79766,Home Improvement,0
+synthetic_1976,4711.96438,Electronics,0
+synthetic_1977,3336.18391,Grocery,0
+synthetic_1978,1068.11146,Coffee Shop,1
+synthetic_1979,1963.02573,Home Improvement,0
+synthetic_1980,3630.35031,Coffee Shop,0
+synthetic_1981,4002.18885,Electronics,1
+synthetic_1982,3931.71725,Gas Station,0
+synthetic_1983,568.21391,Gas Station,0
+synthetic_1984,2202.50791,Grocery,0
+synthetic_1985,4630.95735,Coffee Shop,0
+synthetic_1986,1425.32271,Coffee Shop,1
+synthetic_1987,749.21217,Grocery,1
+synthetic_1988,3699.09614,Online Retail,0
+synthetic_1989,3801.75233,Grocery,0
+synthetic_1990,3028.42983,Home Improvement,0
+synthetic_1991,4757.46271,Online Retail,0
+synthetic_1992,2851.05773,Online Retail,0
+synthetic_1993,1164.98556,Pharmacy,0
+synthetic_1994,4933.90563,Electronics,0
+synthetic_1995,1891.31992,Coffee Shop,0
+synthetic_1996,2125.3862,Coffee Shop,0
+synthetic_1997,4203.56603,Pharmacy,0
+synthetic_1998,4832.55833,Coffee Shop,0
+synthetic_1999,2622.78221,Coffee Shop,0
+synthetic_2000,702.90974,Electronics,0
